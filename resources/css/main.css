@@ -1,0 +1,40 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-size: inherit;
+    font-weight: inherit;
+    font-style: inherit;
+    color: inherit;
+}
+
+form {
+    margin: 1em;
+}
+
+fieldset {
+    padding: 1em;
+}
+
+/* 5. 모바일 비밀번호 */
+.certify {
+    margin-top: 2.4rem;
+    /* text-align: center; */
+    padding: 0 1.6rem;
+}
+
+.certify input~input {
+    margin-left: .6rem;
+}
+
+.certify input {
+    padding: 0;
+    width: 4rem;
+    height: 4rem;
+    line-height: 4rem;
+    font-size: 1.8rem;
+    font-weight: 700;
+    text-align: center;
+    background-color: #f0f1f4;
+    border-radius: .6rem;
+}
