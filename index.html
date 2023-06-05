@@ -5,184 +5,159 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Form</title>
+    <link rel="stylesheet" href="/resources/css/jquery-ui.css"><!--datepicker-->
     <link rel="stylesheet" href="/resources/css/main.css">
     <script src="/resources/js/jquery-3.7.0.min.js" defer></script>
+    <script src="/resources/js/jquery-ui.js" defer></script><!--datepicker-->
+    <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js" defer></script><!--우편번호조회-->
     <script src="/resources/js/main.js" defer></script>
 </head>
 <body>
 
 <!-- 1. 개인 정보 입력 -->
 <form action="#" accept-charset="UTF-8" name="person_info" method="get">
+
+    <!-- 1-1. 이름-->
     <fieldset style="width: 400px;">
-        <legend>1. 개인 정보 입력</legend><br>
+        <legend>1-1. 이름 입력</legend>
         
-        <label for="">이름 : </label>
-        <input type="text" name="name1" required><br><br>
+        <label for="">이름1</label><br>
+        <input type="text" name="name1"><br><br>
+        
+        <label for="">이름2</label><br>
+        <input type="text" name="name2" style="width: 100px;" placeholder="성">
+        <input type="text" name="name2" style="width: 200px;" placeholder="이름">
+    </fieldset>
 
-        <label for="">주민번호 : </label>
-        <input type="text" name="security_num"
-                    pattern="\d{6}\-\d{7}"
-                    title="000000-0000000 형식으로 입력해주세요"><br><br>
+    <!-- 1-2. 주민등록번호 -->
+    <fieldset style="width: 400px">
+        <legend>1-2. 주민번호 입력</legend>
 
-        <label for="">전화번호 : </label>
-        <input type="tel" class="form-control m-input" name="tel" id="telInput" required
-            pattern="[0-9]{2,3}-[0-9]{3,4}-[0-9]{4}" maxlength="13" placeholder="010-0000-0000"><br><br>
+        <label for="">주민등록번호 </label><br>
+        <input type="text" name="security_num" pattern="\d{13}" title="주민등록번호 13자리 입력" placeholder=" '-'빼고 숫자만 입력" style="width: 200px;"><br><br>
 
-        <label for="">이메일 : </label>
-        <input type="email" name="email" required><br><br>
+        <label for="">주민등록번호 </label><br>
+        <input type="text" name="security_num" pattern="\d{6}\-\d{7}" title="000000-0000000 형식으로 입력해주세요" style="width: 200px;"><br><br>
+
+        <label for="">주민등록번호 </label><br>
+        <input class="securityNum" type="text" name="security_num" pattern="\d{6}" title="" style="width: 100px;" maxlength="6"> -
+        <input class="securityNum" type="text" name="security_num" pattern="\d{7}" title="" style="width: 100px;" maxlength="7"><br><br>
+        
+        <label for="">생년월일 </label><br>
+        <input type="text" name="security_num" pattern="\d{8}" placeholder="YYYYMMDD" title="YYYYMMDD와 같은 8자리 숫자">
+    </fieldset>
+
+    <!-- 1-3. 전화번호 -->
+    <fieldset style="width: 500px">
+        <legend>1-3. 전화번호 입력</legend>
+        
+        <!-- '-'빼고 숫자만 입력 -->
+        <label for="">휴대전화번호</label>
+        <input type="tel" name="tel" maxlength="13" placeholder=" '-'빼고 숫자만 입력">
+        <input type="submit" value="인증요청"><br><br>
+        
+        <!-- 000-0000-0000 직접 입력-->
+        <label for="">휴대전화번호</label>
+        <input type="tel" name="tel" pattern="(?:(010-\d{4})|(01[1|6|7|8|9]-\d{3,4}))-(\d{4})" maxlength="13" placeholder="000-0000-0000"><br><br>
+
+        <!-- 다음 칸 자동으로 이동-->
+        <label for="">휴대전화번호</label>
+        <input class="phoneNum" type="text" name="phone_num" value="010" title="" style="width: 50px;" disabled> -
+        <input class="phoneNum" type="text" name="phone_num" pattern="\d{4}" title="" style="width: 100px;" maxlength="4"> -
+        <input class="phoneNum" type="text" name="phone_num" pattern="\d{4}" title="" style="width: 100px;" maxlength="4"><br>
+    </fieldset>
+
+    <!-- 1-4. 이메일 -->
+    <fieldset style="width: 700px">
+        <legend>1-4. 이메일 입력</legend>
+
+        <!-- 전체 입력 -->
+        <label for="">이메일</label><br>
+        <input type="email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"><br><br>
+
+        <!-- 도메인 select -->
+        <tr>
+            <td>
+                <input type="text" id="email_id" class="form_w200" value="" title="이메일 아이디" placeholder="이메일" maxlength="18"> @
+                <input type="text" id="email_domain" class="form_w200" value="" title="이메일 도메인" placeholder="이메일 도메인" maxlength="18">
+                <select class="select" title="이메일 도메인 주소 선택" onclick="setEmailDomain(this.value);return false;">
+                    <option disabled value="" selected>--선택--</option>
+                    <option value="naver.com">naver.com</option>
+                    <option value="gmail.com">gmail.com</option>
+                    <option value="hanmail.net">hanmail.net</option>
+                    <option value="hotmail.com">hotmail.com</option>
+                    <option value="korea.com">korea.com</option>
+                    <option value="nate.com">nate.com</option>
+                    <option value="yahoo.com">yahoo.com</option>
+                </select>
+            </td>
+        </tr>
+        <input type="submit" value="확인"><br>
+    </fieldset>
+
+    <!-- 1-5. 아이디 -->
+    <fieldset style="width: 500px">
+        <legend>1-5. 아이디 입력</legend>
                     
-        <label for="">아이디 : </label>
-        <input type="text" name="id"><br><br>
+        <label for="">아이디</label>
+        <input type="text" name="id" pattern="^([a-z0-9_]){6,50}$" placeholder="영문소문자, 숫자, 언더바(_) 6~50자" style="width: 300px;"><br>
+    </fieldset>
 
-        <label for="">패스워드 : </label>
-        <input type="password" name="password"><br><br>
+    <!-- 1-6. 비밀번호 -->
+    <fieldset style="width: 500px">
+        <legend>1-6. 비밀번호 입력</legend>
 
-        성별 : 
-        <label for="">남 </label>
-        <input type="radio" name="gender1" value="man">
-        <label for="">여 </label>
-        <input type="radio" name="gender1" value="woman"><br><br>
+        <label for="">패스워드</label><br>
+        <input type="password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" placeholder="영문 대소문자, 숫자 포함 8글자 이상"
+            style="width: 400px;"><br><br>
 
-        관심사 : 
-        <label for="">연예 
-            <input type="checkbox" name="checkbox1">
+        <label for="">패스워드</label><br>
+        <input type="password" name="password"
+            pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*()_-+=[]{}~?:;`|/]).{6,50}$"
+            placeholder="영문 대소문자, 숫자, 특수문자 포함 6~50자" style="width: 400px;"><br>
+    </fieldset>
+
+    <!-- 1-7. 성별 -->
+    <fieldset style="width: 500px">
+        <legend>1-7. 성별</legend>
+    
+        <!-- 라디오 -->
+        <label for="option1">남 </label>
+        <input type="radio" name="gender1" value="man" id="option1">
+        <label for="option2">여
+            <input type="radio" name="gender1" value="woman" id="option2"></label><br><br>
+    
+        <!-- 셀렉트 박스 -->
+        <select name="gender2">
+            <option value="">성별 선택</option>
+            <option value="남">남</option>
+            <option value="여">여</option>
+        </select><br><br>
+    
+        <!-- 토글 스위치 -->
+        <label class="switch">
+            <input type="checkbox">
+            <span class="slider round"></span>
+        </label><br><br>
+    
+        <!-- 라디오 버튼 -->
+        <label class="radioBtn">
+            <input type="radio" name="gender4" value="man" checked>
+            <span>남자</span>
         </label>
-
-        <label for="">스포츠 </label>
-        <input type="checkbox" name="checkbox2">
-
-        <label for="">IT </label>
-        <input type="checkbox" name="checkbox3"><br><br>
-
-        <input type="submit" value="submit">
-        <input type="reset" value="reset"><br><br>
-    </fieldset>
-
-    <fieldset style="width: 400px;">
-        <legend>1. 이름 입력</legend><br>
-        
-        <label for="">이름1 : </label><br>
-        <input type="text" name="name1" required><br><br>
-        
-        <label for="">이름2 : </label><br>
-        <input type="text" name="name2" style="width: 100px;" placeholder="성" required >
-        <input type="text" name="name2" style="width: 200px;" placeholder="이름" required ><br><br>
+    
+        <label class="radioBtn">
+            <input type="radio" name="gender4" value="woman">
+            <span>여자</span>
+        </label>
+    
     </fieldset>
 </form>
 
-<!-- 2. 주소 입력 -->
-<form action="#" accept-charset="UTF-8" name="address_info" method="get">
-    <fieldset style="width: 250px;">
-        <legend>2. 주소 입력</legend>
-        
-        <br><label for="">지역선택 (optgroup 태그)</label><br>
-        <select name="city1">
-            <optgroup label="서울">
-                <option value="songpa-gu">송파구</option>
-                <option value="songpa-gu">송파구</option>
-                <option value="songpa-gu">송파구</option>
-                <option value="songpa-gu">송파구</option>
-            </optgroup>
-            <optgroup label="경기도">
-                <option value="seongnam-si">성남시</option>
-                <option value="seongnam-si">성남시</option>
-                <option value="seongnam-si">성남시</option>
-                <option value="seongnam-si">성남시</option>
-            </optgroup>
-        </select>
-        <br><br>
-        
-        <br><label for="">지역선택 (size, multiple 속성)</label><br>
-        <select name="city2" size="5" multiple>
-            <option value="seongnam-si">성남시</option>
-            <option value="seongnam-si">성남시</option>
-            <option value="seongnam-si">성남시</option>
-            <option value="seongnam-si">성남시</option>
-            <option value="seongnam-si">성남시</option>
-            <option value="seongnam-si">성남시</option>
-        </select>
-        <br><br>
-        <input type="submit" value="submit">
-        <input type="reset" value="reset"><br><br>
-    </fieldset>
-</form>
-
-<!-- 3. 긴 글 입력 -->
-<form action="#" accept-charset="UTF-8" name="request" method="get">
-    <fieldset style="width: 250px;">
-        <legend>3. 긴 글 입력</legend>
-
-        <br><label for="">요청 사항</label><br>
-        <textarea name="comment" cols="30" rows="10" placeholder="요청사항을 남겨주세요."></textarea>
-        <br><br>
-        <input type="submit" value="submit">
-        <input type="reset" value="reset"><br><br>
-    </fieldset>
-</form>
-
-<!-- 4. 날짜 입력 -->
-<form action="#" accept-charset="UTF-8" name="date" method="get">
-    <fieldset style="width: 250px;">
-        <legend>4. 날짜 입력</legend>
-
-        <br><label for="">date</label><br>
-        <input type="date" min="1980-01-01" max="2023-12-31" name="date" step="1"><br>
-
-        <br><label for="">month</label><br>
-        <input type="month" min="1980-01-01" max="2023-12-31" name="date" step="1"><br>
-
-        <br><label for="">week</label><br>
-        <input type="week" min="1980-01-01" max="2023-12-31" name="date" step="1"><br>
-
-        <br><label for="">time</label><br>
-        <input type="time" min="1980-01-01" max="2023-12-31" name="date" step="1"><br>
-
-        <br><label for="">datetime</label><br>
-        <input type="datetime" min="1980-01-01" max="2023-12-31" name="date" step="1"><br>
-
-        <br><label for="">datetime-local</label><br>
-        <input type="datetime-local" min="1980-01-01" max="2023-12-31" name="date" step="1"><br>
-
-        <br><label for="">숫자 스핀컨트롤</label><br>
-        <input type="number" name="usernumber" value="100" step="10" min="0" max="1000"><br>
-
-        <br><label for="">숫자 슬라이드</label><br>
-        <input type="range" name="userrange" value="100" step="100" min="0" max="1000"><br>
-
-        <br><label for="">숫자 슬라이드 (마커 표시)</label><br>
-        <input type="range" name="userrange" list="markers" step="25"><br>
-        <datalist id="markers">
-          <option value="0"></option>
-          <option value="25"></option>
-          <option value="50"></option>
-          <option value="75"></option>
-          <option value="100"></option>
-        </datalist>
-        
-
-        <br>
-        <input type="submit" value="submit">
-        <input type="reset" value="reset"><br><br>
-    </fieldset>
-</form>
-
-<!-- 5. 모바일 비밀번호 -->
-<form action="#" name="mo-password" method="get">
-    <fieldset style="width: 400px;">
-        <legend>모바일 비밀번호</legend>
-        <div class="certify">
-            <input type="tel" maxlength="1" min="0" max="9" onlyNumber>
-            <input type="tel" maxlength="1" min="0" max="9" onlyNumber>
-            <input type="tel" maxlength="1" min="0" max="9" onlyNumber>
-            <input type="tel" maxlength="1" min="0" max="9" onlyNumber>
-        </div>
-    </fieldset>
-</form>
-
-<!-- 6. 약관 동의 -->
+<!-- 2-1. 약관 동의 -->
 <form action="#" name="checkbox_group" class="checkbox_group">
     <fieldset style="width: 300px;">
-        <legend>약관 동의 1</legend>
+        <legend>2-1. 약관 동의</legend>
 
         <input type="checkbox" id="check_all" >
         <label for="check_all">전체 동의</label><br><br>
@@ -196,13 +171,167 @@
         <input type="checkbox" id="check_3" class="normal" >
         <label for="check_3">[선택] 실명 인증된 아이디로 가입</label><br>
         
-        <input type="checkbox" id="check_3" class="normal" >
+        <input type="checkbox" id="check_4" class="normal" >
         <label for="check_4">[선택] 위치기반서비스 이용약관 </label><br>
         
-        <input type="checkbox" id="check_3" class="normal" >
-        <label for="check_5">[선택] 이벤트・혜택 정보 수신</label><br>
+        <input type="checkbox" id="check_5" class="normal" >
+        <label for="check_5">[선택] 이벤트・혜택 정보 수신</label><br><br>
+
+        <button type="submit" class="next-button" disabled>확인</button>
     </fieldset>
-    
+</form>
+
+<!-- 2-2. 체크박스 -->
+<form action="#" name="checkbox_group" class="checkbox_group">
+    <fieldset style="width: 500px">
+        <legend>2-2. 체크박스</legend>
+
+        관심사 :
+        <label for="">연예
+            <input type="checkbox" name="checkbox1">
+        </label>
+
+        <label for="">스포츠</label>
+        <input type="checkbox" name="checkbox2">
+
+        <label for="">IT</label>
+        <input type="checkbox" name="checkbox3"><br><br>
+
+        <input type="submit" value="submit">
+        <input type="reset" value="reset">
+    </fieldset>
+</form>
+
+
+<!-- 3. 주소 입력 -->
+<form action="#" accept-charset="UTF-8" name="address_info" method="get">
+    <fieldset style="width: 500px;">
+        <legend>3-1. 주소 입력</legend>
+        
+        <!-- optgroup 태그 -->
+        <label for="">지역선택 (optgroup 태그)</label><br>
+        <select name="city1">
+            <optgroup label="서울">
+                <option value="songpa-gu">송파구</option>
+                <option value="songpa-gu">송파구</option>
+                <option value="songpa-gu">송파구</option>
+                <option value="songpa-gu">송파구</option>
+            </optgroup>
+            <optgroup label="경기도">
+                <option value="seongnam-si">성남시</option>
+                <option value="seongnam-si">성남시</option>
+                <option value="seongnam-si">성남시</option>
+                <option value="seongnam-si">성남시</option>
+            </optgroup>
+        </select><br><br>
+        
+        <!-- size, multiple 속성 -->
+        <label for="">지역선택 (size, multiple 속성)</label><br>
+        <select name="city2" size="5" multiple>
+            <option value="seongnam-si">성남시</option>
+            <option value="seongnam-si">성남시</option>
+            <option value="seongnam-si">성남시</option>
+            <option value="seongnam-si">성남시</option>
+            <option value="seongnam-si">성남시</option>
+            <option value="seongnam-si">성남시</option>
+        </select><br><br>
+
+        <!-- 우편번호 -->
+        <input type="text" id="sample6_postcode" placeholder="우편번호">
+        <input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
+        <input type="text" id="sample6_address" placeholder="주소"><br>
+        <input type="text" id="sample6_detailAddress" placeholder="상세주소">
+        <input type="text" id="sample6_extraAddress" placeholder="참고항목">
+
+    </fieldset>
+</form>
+
+<!-- 4. 긴 글 입력 -->
+<form action="#" accept-charset="UTF-8" name="request" method="get">
+    <fieldset style="width: 250px;">
+        <legend>4. 긴 글 입력</legend>
+
+        <label for="">요청 사항</label><br>
+        <textarea name="comment" cols="30" rows="10" placeholder="요청사항을 남겨주세요."></textarea><br>
+        
+        <input type="submit" value="submit">
+        <input type="reset" value="reset">
+    </fieldset>
+</form>
+
+<!-- 5. 날짜 입력 -->
+<form action="#" accept-charset="UTF-8" name="date" method="get">
+    <fieldset style="width: 400px;">
+        <legend>5. 날짜 입력</legend>
+        
+        <!-- datepicker -->
+        <label for="">datepicker</label><br>
+        <input class="datepicker" placeholder="yyyy-mm-dd"><br><br>
+
+        <!-- datepicker (period) -->
+        <label for="">datepicker (period)</label><br>
+        <input type="text" class="datepicker1" placeholder="yyyy-mm-dd" style="width: 150px;"> ~
+        <input type="text" class="datepicker2" placeholder="yyyy-mm-dd" style="width: 150px;"><br><br>
+
+        <!-- datepicker (시작/종료일 제한) -->
+        <label for="fromDate">시작일</label>
+        <input type="text" name="fromDate" id="fromDate">
+        <br>
+        <label for="toDate">종료일</label>
+        <input type="text" name="toDate" id="toDate">
+        <br><br>
+
+        <!-- input type="date" -->
+        <label for="">date</label><br>
+        <input type="date" min="1980-01-01" max="2023-12-31" name="date" step="1"><br><br>
+
+        <!-- input type="month" -->
+        <label for="">month</label><br>
+        <input type="month" min="1980-01-01" max="2023-12-31" name="date" step="1"><br><br>
+
+        <!-- input type="week" -->
+        <label for="">week</label><br>
+        <input type="week" min="1980-01-01" max="2023-12-31" name="date" step="1"><br><br>
+
+        <!-- input type="time" -->
+        <label for="">time</label><br>
+        <input type="time" min="1980-01-01" max="2023-12-31" name="date" step="1"><br><br>
+
+        <!-- input type="number" -->
+        <label for="">숫자 스핀컨트롤</label><br>
+        <input type="number" name="usernumber" value="100" step="10" min="0" max="1000"><br><br>
+
+        <!-- input type="range" -->
+        <label for="">숫자 슬라이드</label><br>
+        <input type="range" name="userrange" value="100" step="100" min="0" max="1000"><br><br>
+
+        <!-- input type="range" (marker) -->
+        <label for="">숫자 슬라이드 (마커 표시)</label><br>
+        <input type="range" name="userrange" list="markers" step="25"><br>
+        <datalist id="markers">
+            <option value="0"></option>
+            <option value="25"></option>
+            <option value="50"></option>
+            <option value="75"></option>
+            <option value="100"></option>
+        </datalist><br>
+        
+        <input type="submit" value="submit">
+        <input type="reset" value="reset">
+    </fieldset>
+</form>
+
+<!-- 6. 모바일 비밀번호 -->
+<form action="#" name="mo-password" method="get">
+    <fieldset style="width: 400px;">
+        <legend>6. 모바일 비밀번호</legend>
+        <div class="certify">
+            <input type="tel" maxlength="1" min="0" max="9" onlyNumber>
+            <input type="tel" maxlength="1" min="0" max="9" onlyNumber>
+            <input type="tel" maxlength="1" min="0" max="9" onlyNumber>
+            <input type="tel" maxlength="1" min="0" max="9" onlyNumber>
+        </div>
+    </fieldset>
 </form>
 
 </body>
