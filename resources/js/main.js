@@ -22,44 +22,79 @@ function setEmailDomain(domain){
     $("#email_domain").val(domain);
 };
 
-  // 3. 주소 입력 - 우편번호
+// 2-1. 약관 동의
+// 체크박스 전체 선택
+$(".checkbox_group").on("click", "#check_all", function () {
+    $(this).parents(".checkbox_group").find('input').prop("checked", $(this).is(":checked"));
+});
+
+// 체크박스 개별 선택
+$(".checkbox_group").on("click", ".normal", function() {
+    var is_checked = true;
+
+    $(".checkbox_group .normal").each(function(){
+        is_checked = is_checked && $(this).is(":checked");
+    });
+
+    $("#check_all").prop("checked", is_checked);
+});
+
+// 체크박스 전체 선택/해제 - 확인 버튼 활성화
+$('input[id*="check_"]').change(function () {
+	var tmpLength = $('input[id*="check_"]').length;
+	var checkedLength = $('input[id*="check_"]:checked').length;
+	var selectAll = (tmpLength == checkedLength);
+    
+	$('#check_all').prop('checked', selectAll);
+	selectAll ? $('.next-button').removeAttr('disabled'):$('.next-button').attr('disabled','disabled');
+});
+
+// 체크박스 필수항목 선택/해제 - 확인 버튼 활성화
+$('.essential').change(function () {
+	var tmpLength2 = $('.essential').length;
+	var checkedLength2 = $('.essential:checked').length;
+	var nextBtnOn = (tmpLength2 == checkedLength2);
+    
+	nextBtnOn ? $('.next-button').removeAttr('disabled'):$('.next-button').attr('disabled','disabled');
+});
+
+// 3. 주소 입력 - 우편번호
 function sample6_execDaumPostcode() {
-    new daum.Postcode({
-        oncomplete: function(data) {
-            var addr = '';
-            var extraAddr = '';
+new daum.Postcode({
+    oncomplete: function(data) {
+        var addr = '';
+        var extraAddr = '';
 
-            if (data.userSelectedType === 'R') {
-                addr = data.roadAddress;
-            } else {
-                addr = data.jibunAddress;
-            }
-
-            if(data.userSelectedType === 'R'){
-                if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
-                    extraAddr += data.bname;
-                }
-                if(data.buildingName !== '' && data.apartment === 'Y'){
-                    extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
-                }
-                if(extraAddr !== ''){
-                    extraAddr = ' (' + extraAddr + ')';
-                }
-                document.getElementById("sample6_extraAddress").value = extraAddr;
-            
-            } else {
-                document.getElementById("sample6_extraAddress").value = '';
-            }
-
-            document.getElementById('sample6_postcode').value = data.zonecode;
-            document.getElementById("sample6_address").value = addr;
-            document.getElementById("sample6_detailAddress").focus();
+        if (data.userSelectedType === 'R') {
+            addr = data.roadAddress;
+        } else {
+            addr = data.jibunAddress;
         }
-    }).open();
+
+        if(data.userSelectedType === 'R'){
+            if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+                extraAddr += data.bname;
+            }
+            if(data.buildingName !== '' && data.apartment === 'Y'){
+                extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+            }
+            if(extraAddr !== ''){
+                extraAddr = ' (' + extraAddr + ')';
+            }
+            document.getElementById("sample6_extraAddress").value = extraAddr;
+        
+        } else {
+            document.getElementById("sample6_extraAddress").value = '';
+        }
+
+        document.getElementById('sample6_postcode').value = data.zonecode;
+        document.getElementById("sample6_address").value = addr;
+        document.getElementById("sample6_detailAddress").focus();
+    }
+}).open();
 }
 
 // 5. 날짜 입력
-
 $.datepicker.setDefaults({
     dateFormat: 'yy-mm-dd',
     prevText: '이전 달',
@@ -108,10 +143,69 @@ $.datepicker.setDefaults({
         }                
     });
   });
-  
 
+// 6. 학력사항
 
-// 6. 모바일 비밀번호
+// 6-1. Div
+$(function () {
+  var survey_options = document.getElementById("survey_options");
+  var add_more_fields = document.getElementById("add_more_fields");
+  var remove_fields = document.getElementById("remove_fields");
+
+  add_more_fields.onclick = function () {
+    var newField = document.createElement("input");
+    newField.setAttribute("type", "text");
+    newField.setAttribute("name", "survey_options[]");
+    newField.setAttribute("class", "survey_options");
+    newField.setAttribute("siz", 50);
+    newField.setAttribute("placeholder", "Another Field");
+    survey_options.appendChild(newField);
+  };
+
+  remove_fields.onclick = function () {
+    var input_tags = survey_options.getElementsByTagName("input");
+    if (input_tags.length > 2) {
+      survey_options.removeChild(input_tags[input_tags.length - 1]);
+    }
+  };
+
+  document.getElementById("print-values-btn").onclick = function () {
+    let allTextBoxes = document.getElementsByName("survey_options[]");
+    for (let i of allTextBoxes) {
+      console.log(i.value); //here you will be able to see all values in the console
+    }
+  };
+});
+
+// 6-2. Table
+function create_tr(table_id) {
+    let table_body = document.getElementById(table_id),
+        first_tr   = table_body.firstElementChild
+        tr_clone   = first_tr.cloneNode(true);
+    table_body.append(tr_clone);
+    clean_first_tr(table_body.firstElementChild);
+}
+function clean_first_tr(firstTr) {
+    let children = firstTr.children;
+    
+    children = Array.isArray(children) ? children : Object.values(children);
+    children.forEach(x=>{
+        if(x !== firstTr.lastElementChild)
+        {
+            x.firstElementChild.value = '';
+        }
+    });
+}
+function remove_tr(This) {
+    if(This.closest('tbody').childElementCount == 1)
+    {
+        alert("You Don't have Permission to Delete This ?");
+    }else{
+        This.closest('tr').remove();
+    }
+}
+
+// 7. 모바일 비밀번호
 $(function(){
     $(document).on("keypress keyup keydown", "input[onlyNumber]", function(e){
         console.log(e.which);
@@ -131,27 +225,5 @@ $(function(){
                 $(this).blur();
             }
         }
-    });    
-});
-
-// 6. 약관 동의
-// 체크박스 전체 선택
-$(".checkbox_group").on("click", "#check_all", function () {
-    $(this).parents(".checkbox_group").find('input').prop("checked", $(this).is(":checked"));
-});
-
-// 체크박스 개별 선택
-$(".checkbox_group").on("click", ".normal", function() {
-    var is_checked = true;
-
-    $(".checkbox_group .normal").each(function(){
-        is_checked = is_checked && $(this).is(":checked");
     });
-
-    $("#check_all").prop("checked", is_checked);
-});
-
-$(".checkbox_group").on("click", "#check_all", function (){
-    const target = document.getElementsByClassName('next-button');
-    target.disabled = false;
 });
