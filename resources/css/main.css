@@ -76,7 +76,6 @@ img.ui-datepicker-trigger {
   padding: 10px;
   border: 1px solid #242222;
   background: white;
-  /* box-shadow: 0px 10px 40px 0px rgba(47,47,47,.1); */
 }
 
 input.survey_options{
@@ -116,8 +115,6 @@ a {
   margin: 3em auto;
   padding: 15px;
   border: 1px solid #242222;
-  /* box-shadow: 0 2px 20px #0001, 0 1px 6px #0001; */
-  /* border-radius: 5px; */
   overflow-x: auto;
 }
 .dynm_table {
