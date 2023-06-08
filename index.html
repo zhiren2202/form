@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Form</title>
     <link rel="stylesheet" href="./resources/css/jquery-ui.css">
+    <link rel="stylesheet" href="./resources/jquery-ui-1.13.2.custom/jquery-ui-1.13.2.custom/jquery-ui.theme.css">
     <link rel="stylesheet" href="./resources/css/main.css">
     <script src="./resources/js/jquery-3.7.0.min.js" defer></script>
     <script src="./resources/js/jquery-ui.js" defer></script>
@@ -33,18 +34,41 @@
     <fieldset>
         <legend>1-2. 주민번호 입력</legend>
 
-        <label for="">주민등록번호 </label><br>
+        <label for="">주민등록번호 (숫자입력)</label><br>
         <input type="text" name="security_num" pattern="\d{13}" title="주민등록번호 13자리 입력" placeholder=" '-'빼고 숫자만 입력" style="width: 200px;"><br><br>
 
-        <label for="">주민등록번호 </label><br>
+        <label for="">주민등록번호 (하이픈입력)</label><br>
         <input type="text" name="security_num" pattern="\d{6}\-\d{7}" title="000000-0000000 형식으로 입력해주세요" style="width: 200px;"><br><br>
 
-        <label for="">주민등록번호 </label><br>
-        <input class="securityNum" type="text" name="security_num" pattern="\d{6}" title="" style="width: 100px;" maxlength="6"> -
-        <input class="securityNum" type="text" name="security_num" pattern="\d{7}" title="" style="width: 100px;" maxlength="7"><br><br>
+        <label for="">주민등록번호 (자동 칸 이동)</label><br>
+        <input class="securityNum" type="text" name="security_num" pattern="\d{6}" style="width: 100px;" maxlength="6"> -
+        <input class="securityNum" type="text" name="security_num" pattern="\d{7}" style="width: 100px;" maxlength="7"><br><br>
+
+        <label for="">주민등록번호 (뒷자리마스킹)</label><br>
+        <input class="securityNum-msk1" type="text" name="securityNum-msk" pattern="\d{6}" style="width: 100px;" maxlength="6"> -
+        <input class="securityNum-msk2" type="text" name="securityNum-msk" pattern="\d{7}" style="width: 100px;" maxlength="7"><br><br>
         
-        <label for="">생년월일 </label><br>
-        <input type="text" name="security_num" pattern="\d{8}" placeholder="YYYYMMDD" title="YYYYMMDD와 같은 8자리 숫자">
+        <label for="">생년월일</label><br>
+        <input type="text" name="birth" pattern="\d{8}" placeholder="YYYYMMDD" title="YYYYMMDD와 같은 8자리 숫자"><br><br>
+        
+        <label for="">생년월일 (개별입력)</label><br>
+        <input type="text" class="birth2" name="birth2" pattern="\d{2}" placeholder="23" style="width: 50px;" maxLength="2">년
+        <input type="text" class="birth2" name="birth2" pattern="\d{1}\-\d{2}" placeholder="01" style="width: 50px;" maxLength="2">월
+        <input type="text" class="birth2" name="birth2" pattern="\d{1}\-\d{2}" placeholder="01" style="width: 50px;" maxLength="2">일<br><br>
+        
+        <label for="">생년월일 (개별선택)</label><br>
+        <div class="info" id="info_birth">
+            <select class="box" id="birth-year">
+                <option disabled selected>출생 연도</option>
+            </select>
+            <select class="box" id="birth-month">
+                <option disabled selected>월</option>
+            </select>
+            <select class="box" id="birth-day">
+                <option disabled selected>일</option>
+            </select>
+        </div>
+
     </fieldset>
 
     <!-- 1-3. 전화번호 -->
@@ -63,6 +87,19 @@
         <!-- 다음 칸 자동으로 이동-->
         <label for="">휴대전화번호</label>
         <input class="phoneNum" type="text" name="phone_num" value="010" title="" style="width: 50px;" disabled> -
+        <input class="phoneNum" type="text" name="phone_num" pattern="\d{4}" title="" style="width: 100px;" maxlength="4"> -
+        <input class="phoneNum" type="text" name="phone_num" pattern="\d{4}" title="" style="width: 100px;" maxlength="4"><br><br>
+
+        <!-- 첫째 칸 선택박스 -->
+        <label for="">휴대전화번호</label>
+        <select name="phone_num" id="phoneNum">
+            <option value="" disabled selected>선택</option>
+            <option value="">010</option>
+            <option value="">016</option>
+            <option value="">017</option>
+            <option value="">018</option>
+            <option value="">019</option>
+        </select> -
         <input class="phoneNum" type="text" name="phone_num" pattern="\d{4}" title="" style="width: 100px;" maxlength="4"> -
         <input class="phoneNum" type="text" name="phone_num" pattern="\d{4}" title="" style="width: 100px;" maxlength="4"><br>
     </fieldset>
@@ -123,9 +160,9 @@
     
         <!-- 라디오 -->
         <label for="option1">남 </label>
-        <input type="radio" name="gender1" value="man" id="option1">
-        <label for="option2">여
-            <input type="radio" name="gender1" value="woman" id="option2"></label><br><br>
+        <input type="radio" name="gender1" value="man" id="option1" checked>
+        <label for="option2">여 </label>
+        <input type="radio" name="gender1" value="woman" id="option2"><br><br>
     
         <!-- 셀렉트 박스 -->
         <select name="gender2">
@@ -135,16 +172,14 @@
         </select><br><br>
     
         <!-- 라디오 버튼 -->
-        <label class="radioBtn">
-            <input type="radio" name="gender4" value="man" checked>
-            <span>남자</span>
-        </label>
-    
-        <label class="radioBtn">
-            <input type="radio" name="gender4" value="woman">
-            <span>여자</span>
-        </label>
-    
+        <div class="genderBtn">
+        <input type="radio" name="gender3" value="man" id="genderBtn_m" checked>
+        <label class="radioBtn" for="genderBtn_m"><span>남자</span></label>
+        
+        
+        <input type="radio" name="gender3" value="woman" id="genderBtn_w">
+        <label class="radioBtn" for="genderBtn_w"><span>여자</span></label>
+    </div>
     </fieldset>
 </form>
 
@@ -257,7 +292,7 @@
     <fieldset>
         <legend>5. 날짜 입력</legend>
         
-        <!-- datepicker -->
+        <!-- datepicker (basic) -->
         <label for="">datepicker</label><br>
         <input class="datepicker" placeholder="yyyy-mm-dd"><br><br>
 
@@ -265,18 +300,26 @@
         <label for="">datepicker (period)</label><br>
         <input type="text" class="datepicker1" placeholder="yyyy-mm-dd" style="width: 150px;"> ~
         <input type="text" class="datepicker2" placeholder="yyyy-mm-dd" style="width: 150px;"><br><br>
+        
+        <!-- datepicker (today, 1month, 이전날짜x) -->
+        <label for="">datepicker (today, 1month, 이전날짜x)</label><br>
+        <input class="datepicker3"><br><br>
 
         <!-- datepicker (시작/종료일 제한) -->
         <label for="fromDate">시작일</label>
-        <input type="text" name="fromDate" id="fromDate">
+        <input type="text" name="fromDate" id="fromDate" placeholder="yyyy-mm-dd">
         <br>
         <label for="toDate">종료일</label>
-        <input type="text" name="toDate" id="toDate">
+        <input type="text" name="toDate" id="toDate" placeholder="yyyy-mm-dd">
         <br><br>
 
         <!-- input type="date" -->
         <label for="">date</label><br>
         <input type="date" min="1980-01-01" max="2023-12-31" name="date" step="1"><br><br>
+
+        <!-- input type="date (today)" -->
+        <label for="">date (today)</label><br>
+        <input type="date" min="1980-01-01" max="2023-12-31" name="date" step="1" id="currentDate"><br><br>
 
         <!-- input type="month" -->
         <label for="">month</label><br>
@@ -319,7 +362,7 @@
     <fieldset>
         <legend>6. 동적 입력 필드 생성</legend>
 
-        <!-- 6-1. Div -->
+        <!-- 6-1. 동적 입력 필드 생성 - Div -->
         <div class="survey_wrapper">
             <div id="survey_options">
                 <input type="text" name="survey_options[]" class="survey_options" size="50" placeholder="Name">
@@ -332,7 +375,7 @@
             </div>
         </div>
 
-        <!-- 6-2. Table -->
+        <!-- 6-2. 동적 입력 필드 생성 - Table -->
         <div class="dynm_container">
             <table class="dynm_table">
                 <thead>
@@ -384,6 +427,77 @@
             <input type="tel" maxlength="1" min="0" max="9" onlyNumber>
             <input type="tel" maxlength="1" min="0" max="9" onlyNumber>
         </div>
+    </fieldset>
+</form>
+
+<!-- 8. 첨부파일 -->
+<form action="#" accept-charset="UTF-8" name="request" method="post" enctype="multipart/form-data" class="attach">
+    <fieldset>
+        <legend>8-1. 첨부파일</legend>
+
+        <input type="file" accept="image/*,.txt" multiple required onchange="readURL(this);">
+        <input type="submit">
+        <img id="preview">
+    </fieldset>
+    
+    <fieldset>
+        <legend>8-2. 첨부파일 디자인</legend>
+
+        <label class="input-file-button" for="input-file">업로드</label>
+        <input type="file" id="input-file" accept="image/*,.txt" multiple required onchange="readURL2(this);">
+        <img id="preview2">
+
+        <a href="/resources/imgs/dynamic-plus.png" download class="downloadBtn">
+            <button type="button">이미지 다운로드</button>
+        </a>
+    </fieldset>
+    
+    <fieldset>
+        <legend>8-3. 첨부파일 추가</legend>
+    
+        <div class="dynm_container">
+            <table class="dynm_table">
+                <thead>
+                    <tr>
+                        <th scope="col">첨부파일</th>
+                        <th width="50px">
+                            <div class="actionBtn">
+                                <a href="javascript:void(0);" class="success" onclick="create_tr3('table_body')">
+                                    <img src="./resources/imgs/dynamic-plus.png" alt="">
+                                </a>
+                            </div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody id="table_body2">
+                    <tr>
+                        <td>
+                            <input type="file" accept="image/*,.txt" multiple required onchange="readURL3(this);">
+                        </td>
+                        <td>
+                            <div class="actionBtn">
+                                <a href="javascript:void(0);" class="danger" onclick="remove_tr3(this)">
+                                    <img src="./resources/imgs/dynamic-close.png" alt="">
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </fieldset>
+</form>
+
+<!-- 9. 검색어 자동완성 -->
+<form action="#" accept-charset="UTF-8" name="search_input" method="get">
+    <fieldset>
+        <legend>9. 검색어 자동완성</legend>
+
+        <input class="search_input">
+        <container class="rel_search">
+            <ul class="pop_rel_keywords"></ul>
+        </container>
+        <button type="submit"></button>
     </fieldset>
 </form>
 
