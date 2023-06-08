@@ -1,11 +1,73 @@
-// 1-2. 주민등록번호
+// 1-2. 주민등록번호 (자동 칸 이동)
 $(".securityNum").keyup(function () {
     if (this.value.length == this.maxLength) {
         $(this).next('.securityNum').focus();
     }
 });
 
-// 1-3. 전화번호
+// 1-2. 주민등록번호 (뒷자리마스킹)
+$(".securityNum-msk1").on("keypress", function () {
+  var text = $(".securityNum-msk1")
+    .val()
+    .replace(/[^0-9]/g, "");
+  if (text.length >= $(this).attr("maxlength")) {
+    $(".securityNum-msk2").focus();
+    return;
+  }
+});
+
+$(".securityNum-msk2")
+  .on("keypress", function (e) {
+    var inVal = String.fromCharCode(e.which);
+  })
+  .on("input", function (e) {
+    $(this).val(
+      $(this)
+        .val()
+        .replace(/(?<=.{1})./gi, "*")
+    );
+  });
+
+// 1-2. 생년월일 (개별입력)
+$(".birth2").keyup(function () {
+    if (this.value.length == this.maxLength) {
+        $(this).next(".birth2").focus();
+    }
+});
+
+// 1-2. 생년월일 (개별선택)
+$(document).ready(function(){
+	setDateBox();
+});
+function setDateBox(){
+	var dt = new Date();
+	var year = dt.getFullYear();
+	var month = dt.getMonth()+1;
+
+	for(var y = (year); y >=(year-80); y--){
+		if(year == y) {
+			$("#birth-year").append("<option selected value='"+ y +"'>"+ y + "년" +"</option>");
+		}else{
+			$("#birth-year").append("<option value='"+ y +"'>"+ y + "년" +"</option>");
+		}
+	}
+	for(var i = 1; i <= 12; i++){
+		if(month == i) {
+			$("#birth-month").append("<option selected value='"+ i +"'>"+ i + "월" +"</option>");
+		}else{
+			$("#birth-month").append("<option value='"+ i +"'>"+ i + "월" +"</option>");
+		}
+	}
+	for(var i = 1; i <= 31; i++){
+		if(month == i) {
+			$("#birth-day").append("<option selected value='"+ i +"'>"+ i + "일" +"</option>");
+		}else{
+			$("#birth-day").append("<option value='"+ i +"'>"+ i + "일" +"</option>");
+		}
+	}
+};
+
+// 1-3. 전화번호 - 다음 칸 자동으로 이동
 $(".phoneNum").keyup(function () {
     if (this.value.length == this.maxLength) {
         $(this).next('.phoneNum').focus();
@@ -105,48 +167,63 @@ $.datepicker.setDefaults({
     dayNamesShort: ['일', '월', '화', '수', '목', '금', '토'],
     dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
     showMonthAfterYear: true,
-    yearSuffix: '년'
-  });
+    yearSuffix: '년',
+});
 
-  $(function () {
-    $(".datepicker").datepicker();
-  });
-  
-  $(function () {
-    $(".datepicker1, .datepicker2").datepicker();
-  });
+// datepicker (basic)
+$(function () {
+$(".datepicker").datepicker();
+});
 
-  $(function(){
-    $('#fromDate').datepicker({
-        showOn: "both",
-        buttonImage: "http://jqueryui.com/resources/demos/datepicker/images/calendar.gif",
-        buttonImageOnly : true,
-        buttonText: "날짜선택",
-        dateFormat: "yy-mm-dd",
-        changeMonth: true,
-        minDate: 0,
-        onClose: function( selectedDate ) {
-            $("#toDate").datepicker( "option", "minDate", selectedDate );
-        }                
-    });
+// datepicker (period)
+$(function () {
+$(".datepicker1, .datepicker2").datepicker();
+});
 
-    $('#toDate').datepicker({
-        showOn: "both", 
-        buttonImage: "http://jqueryui.com/resources/demos/datepicker/images/calendar.gif", 
-        buttonImageOnly : true,
-        buttonText: "날짜선택",
-        dateFormat: "yy-mm-dd",
-        changeMonth: true,
-        minDate: 0,
-        onClose: function( selectedDate ) {
-            $("#fromDate").datepicker( "option", "maxDate", selectedDate );
-        }                
-    });
-  });
+// datepicker (today, 1month, 이전날짜x)
+$(function() {	
+    $('.datepicker3').datepicker({
+        format : "yyyy-mm-dd",
+        autoclose : true, 
+        todayHighlight :true,
+        minDate: "0",
+        maxDate: "+1M",
+    }).datepicker("setDate", new Date());
+});
 
-// 6. 학력사항
+// datepicker (시작/종료일 제한)
+$(function(){
+$('#fromDate').datepicker({
+    showOn: "both",
+    buttonImage: "http://jqueryui.com/resources/demos/datepicker/images/calendar.gif",
+    // buttonImage: "/resources/imgs/dynamic-close.png",
+    buttonImageOnly : true,
+    buttonText: "날짜선택",
+    dateFormat: "yy-mm-dd",
+    changeMonth: true,
+    minDate: "0",
+    onClose: function( selectedDate ) {
+        $("#toDate").datepicker("option", "minDate", selectedDate);
+    }
+});
+$('#toDate').datepicker({
+    showOn: "both", 
+    buttonImage: "http://jqueryui.com/resources/demos/datepicker/images/calendar.gif", 
+    buttonImageOnly : true,
+    buttonText: "날짜선택",
+    dateFormat: "yy-mm-dd",
+    changeMonth: true,
+    minDate: "0",
+    onClose: function( selectedDate ) {
+        $("#fromDate").datepicker( "option", "maxDate", selectedDate );
+    }
+});
+});
 
-// 6-1. Div
+// input type="date (today)"
+document.getElementById('currentDate').value = new Date().toISOString().substring(0, 10);;
+
+// 6-1. 동적 입력 필드 생성 - Div
 $(function () {
   var survey_options = document.getElementById("survey_options");
   var add_more_fields = document.getElementById("add_more_fields");
@@ -172,12 +249,12 @@ $(function () {
   document.getElementById("print-values-btn").onclick = function () {
     let allTextBoxes = document.getElementsByName("survey_options[]");
     for (let i of allTextBoxes) {
-      console.log(i.value); //here you will be able to see all values in the console
+      console.log(i.value);
     }
   };
 });
 
-// 6-2. Table
+// 6-2. 동적 입력 필드 생성 - Table
 function create_tr(table_id) {
     let table_body = document.getElementById(table_id),
         first_tr   = table_body.firstElementChild
@@ -197,7 +274,7 @@ function clean_first_tr(firstTr) {
     });
 }
 function remove_tr(This) {
-    if(This.closest('tbody').childElementCount == 1)
+    if(This.closest('#table_body').childElementCount == 1)
     {
         alert("You Don't have Permission to Delete This ?");
     }else{
@@ -227,3 +304,117 @@ $(function(){
         }
     });
 });
+
+// 8-1. 첨부파일
+function readURL(input) {
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+    reader.onload = function (e) {
+      document.getElementById("preview").src = e.target.result;
+    };
+    reader.readAsDataURL(input.files[0]);
+  } else {
+    document.getElementById("preview").src = "";
+  }
+}
+
+// 8-2. 첨부파일 디자인
+function readURL2(input) {
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+    reader.onload = function (e) {
+      document.getElementById("preview2").src = e.target.result;
+    };
+    reader.readAsDataURL(input.files[0]);
+  } else {
+    document.getElementById("preview2").src = "";
+  }
+}
+
+
+
+// 8-3. 첨부파일 추가
+function create_tr3(table_id) {
+    let table_body = document.getElementById(table_id),
+        first_tr   = table_body.firstElementChild
+        tr_clone   = first_tr.cloneNode(true);
+    table_body.append(tr_clone);
+    clean_first_tr(table_body.firstElementChild);
+}
+function clean_first_tr(firstTr) {
+    let children = firstTr.children;
+    
+    children = Array.isArray(children) ? children : Object.values(children);
+    children.forEach(x=>{
+        if(x !== firstTr.lastElementChild)
+        {
+            x.firstElementChild.value = '';
+        }
+    });
+}
+function remove_tr3(This) {
+    if(This.closest('#table_body2').childElementCount == 1)
+    {
+        alert("You Don't have Permission to Delete This ?");
+    }else{
+        This.closest('tr').remove();
+    }
+}
+
+// 9. 검색어 자동완성
+const ul = document.querySelector(".pop_rel_keywords");
+const searchInput = document.querySelector(".search_input");
+const relContainer = document.querySelector(".rel_search");
+let cache = "";
+
+const checkInput = () => {
+  const beforeInput = searchInput.value;
+  timer(beforeInput);
+};
+
+const timer = (beforeInput) => {
+  setTimeout(() => {
+    if (searchInput.value === beforeInput) {
+      console.log("입력멈춤");
+      loadData(searchInput.value);
+      checkInput();
+    } else {
+      console.log("입력변함");
+      checkInput();
+    }
+
+    if (searchInput.value === "") {
+      relContainer.classList.add("hide");
+    } else {
+      relContainer.classList.remove("hide");
+    }
+  }, 200);
+};
+
+const loadData = (input) => {
+  const url = `https://completion.amazon.com/api/2017/suggestions?session-id=135-3077052-6015425&customer-id=&request-id=DMRETXPQ3PZJQ5TKYSWX&page-type=Gateway&lop=en_US&site-variant=desktop&client-info=amazon-search-ui&mid=ATVPDKIKX0DER&alias=aps&b2b=0&fresh=0&ks=undefined&prefix=${input}&event=onFocusWithSearchTerm&limit=11&fb=1&suggestion-type=KEYWORD&suggestion-type=WIDGET&_=1615280967091`;
+
+  if (cache === url) return;
+  else {
+    cache = url;
+    fetch(url)
+      .then((res) => res.json())
+      .then((res) => fillSearch(res.suggestions));
+  }
+};
+
+const fillSearch = (suggestArr) => {
+  ul.innerHTML = "";
+  suggestArr.forEach((el, idx) => {
+    const li = document.createElement("li");
+    li.innerHTML = el.value;
+    ul.appendChild(li);
+  });
+
+  const liList = document.querySelectorAll(".pop_rel_keywords li");
+};
+
+const highlightText = () => {};
+
+checkInput();
+
