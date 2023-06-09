@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search</title>
+    <link rel="stylesheet" href="./resources/css/jquery-ui.css">
+    <link rel="stylesheet" href="./resources/css/jquery-ui.theme.css">
+    <link rel="stylesheet" href="./resources/css/search.css">
+    <script src="./resources/js/jquery-3.7.0.min.js" defer></script>
+    <script src="./resources/js/jquery-ui.js" defer></script>
+    <script src="./resources/js/search.js" defer></script>
+</head>
+<body>
+
+<!-- 문서구분 -->
+<form action="#">
+    <select onclick="setEmailDomain(this.value);return false;">
+        <option value="" selected>문서구분</option>
+        <option value="등록일자">등록일자</option>
+        <option value="등록일자">등록일자</option>
+        <option value="수험번호">수험번호</option>
+        <option value="채용년도">채용년도</option>
+    </select>
+    <input type="text" name="" id="document">
+</form>
+
+<!-- 조회/초기화1 -->
+<form action="#" class="form-2">
+    <!-- 채용년도-->
+    <select class="box" id="recruit-year">
+        <option disabled selected>채용년도</option>
+    </select>
+    
+    <!-- 채용구분-->
+    <select class="box" id="recruit-type">
+        <option value="" selected>채용구분</option>
+        <option value="">구분1</option>
+        <option value="">구분2</option>
+        <option value="">구분3</option>
+    </select>
+    
+    <!-- 채용차수 -->
+    <label for="recruit-num">채용차수</label>
+    <input type="tel" name="recruit-num" id="recruit-num"><br>
+    
+    <!-- 등록일자 -->
+    <label for="recruit-date">등록일자</label>
+    <input type="text" id="recruit-date" class="fromDate" placeholder="yyyy-mm-dd"> ~
+    <input type="text" id="recruit-date" class="toDate" placeholder="yyyy-mm-dd"><br>
+
+    <!-- 수험번호 -->
+    <label for="id_num">수험번호</label>
+    <input type="text" id="id_num" name="id_num" pattern="\d{13}"><br>
+
+    <!-- 성명 -->
+    <label for="id_name">이름</label>
+    <input type="text" id="id_name" name="name"><br>
+
+    <!-- 조회/초기화 버튼 -->
+    <button type="submit">조회</button>
+    <button type="reset">초기화</button>
+</form>
+
+</body>
+</html>
