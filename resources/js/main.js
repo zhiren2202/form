@@ -6,7 +6,7 @@ $(".securityNum").keyup(function () {
 });
 
 // 1-2. 주민등록번호 (뒷자리마스킹)
-$(".securityNum-msk1").on("keypress", function () {
+$(".securityNum-msk1").on("keyup", function () {
   var text = $(".securityNum-msk1")
     .val()
     .replace(/[^0-9]/g, "");
@@ -28,6 +28,13 @@ $(".securityNum-msk2")
     );
   });
 
+  // 1-2. 주민등록번호 (뒷자리 한칸)
+$(".securityNum2").keyup(function () {
+  if (this.value.length == this.maxLength) {
+      $(this).next('.securityNum2').focus();
+  }
+});
+
 // 1-2. 생년월일 (개별입력)
 $(".birth2").keyup(function () {
     if (this.value.length == this.maxLength) {
@@ -43,6 +50,7 @@ function setDateBox(){
 	var dt = new Date();
 	var year = dt.getFullYear();
 	var month = dt.getMonth()+1;
+  var day = dt.getDate();
 
 	for(var y = (year); y >=(year-80); y--){
 		if(year == y) {
@@ -59,7 +67,7 @@ function setDateBox(){
 		}
 	}
 	for(var i = 1; i <= 31; i++){
-		if(month == i) {
+		if(day == i) {
 			$("#birth-day").append("<option selected value='"+ i +"'>"+ i + "일" +"</option>");
 		}else{
 			$("#birth-day").append("<option value='"+ i +"'>"+ i + "일" +"</option>");
@@ -196,7 +204,6 @@ $(function(){
 $('#fromDate').datepicker({
     showOn: "both",
     buttonImage: "http://jqueryui.com/resources/demos/datepicker/images/calendar.gif",
-    // buttonImage: "/resources/imgs/dynamic-close.png",
     buttonImageOnly : true,
     buttonText: "날짜선택",
     dateFormat: "yy-mm-dd",
@@ -215,7 +222,7 @@ $('#toDate').datepicker({
     changeMonth: true,
     minDate: "0",
     onClose: function( selectedDate ) {
-        $("#fromDate").datepicker( "option", "maxDate", selectedDate );
+        $("#fromDate").datepicker( "option", "maxDate", selectedDate);
     }
 });
 });
@@ -318,7 +325,7 @@ function readURL(input) {
   }
 }
 
-// 8-2. 첨부파일 디자인
+// 8-2. 첨부파일 디자인 - 업로드 버튼
 function readURL2(input) {
   if (input.files && input.files[0]) {
     var reader = new FileReader();
@@ -331,7 +338,52 @@ function readURL2(input) {
   }
 }
 
+// 8-2. 첨부파일 디자인 - 첨부파일 필드 디자인
+$(document).ready(function(){
+  var fileTarget = $('.filebox .upload-hidden');
 
+  fileTarget.on('change', function(){  // 값이 변경되면
+    if(window.FileReader){  // modern browser
+      var filename = $(this)[0].files[0].name;
+    } 
+    else {  // old IE
+      var filename = $(this).val().split('/').pop().split('\\').pop();  // 파일명만 추출
+    }
+    
+    // 추출한 파일명 삽입
+    $(this).siblings('.upload-name').val(filename);
+  });
+}); 
+
+//preview image 
+var imgTarget = $('.preview-image .upload-hidden');
+
+imgTarget.on('change', function(){
+    var parent = $(this).parent();
+    parent.children('.upload-display').remove();
+
+    if(window.FileReader){
+        //image 파일만
+        if (!$(this)[0].files[0].type.match(/image\//)) return;
+        
+        var reader = new FileReader();
+        reader.onload = function(e){
+            var src = e.target.result;
+            parent.append('<div class="upload-display"><div class="upload-thumb-wrap"><img src="'+src+'" class="upload-thumb"></div></div>');
+        }
+        reader.readAsDataURL($(this)[0].files[0]);
+    }
+
+    else {
+        $(this)[0].select();
+        $(this)[0].blur();
+        var imgSrc = document.selection.createRange().text;
+        parent.append('<div class="upload-display"><div class="upload-thumb-wrap"><img class="upload-thumb"></div></div>');
+
+        var img = $(this).siblings('.upload-display').find('img');
+        img[0].style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(enable='true',sizingMethod='scale',src=\""+imgSrc+"\")";        
+    }
+});
 
 // 8-3. 첨부파일 추가
 function create_tr3(table_id) {
@@ -359,6 +411,17 @@ function remove_tr3(This) {
     }else{
         This.closest('tr').remove();
     }
+}
+function readURL3(input) {
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+    reader.onload = function (e) {
+      document.getElementById("preview3").src = e.target.result;
+    };
+    reader.readAsDataURL(input.files[0]);
+  } else {
+    document.getElementById("preview3").src = "";
+  }
 }
 
 // 9. 검색어 자동완성
