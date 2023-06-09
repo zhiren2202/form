@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Form</title>
     <link rel="stylesheet" href="./resources/css/jquery-ui.css">
-    <!-- <link rel="stylesheet" href="./resources/jquery-ui-1.13.2.custom/jquery-ui-1.13.2.custom/jquery-ui.theme.css"> -->
     <link rel="stylesheet" href="./resources/css/jquery-ui.theme.css">
     <link rel="stylesheet" href="./resources/css/main.css">
     <script src="./resources/js/jquery-3.7.0.min.js" defer></script>
@@ -54,7 +53,7 @@
         <input class="securityNum-msk2" type="text" name="securityNum-msk" pattern="\d{7}" style="width: 100px;" maxlength="7"><br><br>
         
         <label for="">생년월일</label><br>
-        <input type="text" name="birth" pattern="\d{8}" placeholder="YYYYMMDD" title="YYYYMMDD와 같은 8자리 숫자"><br><br>
+        <input type="text" name="birth" pattern="\d{8}" placeholder="YYYYMMDD" title="YYYYMMDD와 같은 8자리 숫자" maxlength="8"><br><br>
         
         <label for="">생년월일 (개별입력)</label><br>
         <input type="text" class="birth2" name="birth2" pattern="\d{2}" placeholder="23" style="width: 50px;" maxLength="2">년
@@ -120,8 +119,8 @@
         <!-- 도메인 select -->
         <tr>
             <td>
-                <input type="text" id="email_id" class="form_w200" value="" title="이메일 아이디" placeholder="이메일" maxlength="18"> @
-                <input type="text" id="email_domain" class="form_w200" value="" title="이메일 도메인" placeholder="이메일 도메인" maxlength="18">
+                <input type="text" id="email_id" value="" title="이메일 아이디" placeholder="이메일" maxlength="18"> @
+                <input type="text" id="email_domain"  value="" title="이메일 도메인" placeholder="이메일 도메인" maxlength="18">
                 <select class="select" title="이메일 도메인 주소 선택" onclick="setEmailDomain(this.value);return false;">
                     <option disabled value="" selected>--선택--</option>
                     <option value="naver.com">naver.com</option>
@@ -220,19 +219,28 @@
     <fieldset>
         <legend>2-2. 다중선택</legend>
 
+        <!-- 체크박스 -->
         관심사 :
-        <label for="">연예
-            <input type="checkbox" name="checkbox1">
-        </label>
+        <label for="checkBtn_et">연예</label>
+        <input type="checkbox" name="checkbox1" id="checkBtn_et">
+        
 
-        <label for="">스포츠</label>
-        <input type="checkbox" name="checkbox2">
+        <label for="checkBtn_sp">스포츠</label>
+        <input type="checkbox" name="checkbox2" id="checkBtn_sp">
 
-        <label for="">IT</label>
-        <input type="checkbox" name="checkbox3"><br><br>
+        <label for="checkBtn_it">IT</label>
+        <input type="checkbox" name="checkbox3" id="checkBtn_it"><br><br>
 
-        <input type="submit" value="submit">
-        <input type="reset" value="reset">
+        <!-- 라디오 -->
+        관심사 :
+        <label for="radioBtn_et">연예</label>
+        <input type="radio" name="radiobox1" id="radioBtn_et">
+
+        <label for="radioBtn_sp">스포츠</label>
+        <input type="radio" name="radiobox2" id="radioBtn_sp">
+
+        <label for="radioBtn_it">IT</label>
+        <input type="radio" name="radiobox3" id="radioBtn_it"><br><br>
     </fieldset>
 </form>
 
