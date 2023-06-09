@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Form</title>
     <link rel="stylesheet" href="./resources/css/jquery-ui.css">
-    <link rel="stylesheet" href="./resources/jquery-ui-1.13.2.custom/jquery-ui-1.13.2.custom/jquery-ui.theme.css">
+    <!-- <link rel="stylesheet" href="./resources/jquery-ui-1.13.2.custom/jquery-ui-1.13.2.custom/jquery-ui.theme.css"> -->
+    <link rel="stylesheet" href="./resources/css/jquery-ui.theme.css">
     <link rel="stylesheet" href="./resources/css/main.css">
     <script src="./resources/js/jquery-3.7.0.min.js" defer></script>
     <script src="./resources/js/jquery-ui.js" defer></script>
@@ -43,6 +44,10 @@
         <label for="">주민등록번호 (자동 칸 이동)</label><br>
         <input class="securityNum" type="text" name="security_num" pattern="\d{6}" style="width: 100px;" maxlength="6"> -
         <input class="securityNum" type="text" name="security_num" pattern="\d{7}" style="width: 100px;" maxlength="7"><br><br>
+
+        <label for="">주민등록번호 (뒷자리 한칸)</label><br>
+        <input class="securityNum2" type="text" name="securityNum-msk" pattern="\d{6}" style="width: 100px;" maxlength="6"> -
+        <input class="securityNum2" type="text" name="securityNum-msk" pattern="\d{1}" style="width: 20px;" maxlength="1"><br><br>
 
         <label for="">주민등록번호 (뒷자리마스킹)</label><br>
         <input class="securityNum-msk1" type="text" name="securityNum-msk" pattern="\d{6}" style="width: 100px;" maxlength="6"> -
@@ -174,11 +179,11 @@
         <!-- 라디오 버튼 -->
         <div class="genderBtn">
         <input type="radio" name="gender3" value="man" id="genderBtn_m" checked>
-        <label class="radioBtn" for="genderBtn_m"><span>남자</span></label>
+        <label class="radioBtn" for="genderBtn_m">남자</label>
         
         
         <input type="radio" name="gender3" value="woman" id="genderBtn_w">
-        <label class="radioBtn" for="genderBtn_w"><span>여자</span></label>
+        <label class="radioBtn" for="genderBtn_w">여자</label>
     </div>
     </fieldset>
 </form>
@@ -432,24 +437,34 @@
 
 <!-- 8. 첨부파일 -->
 <form action="#" accept-charset="UTF-8" name="request" method="post" enctype="multipart/form-data" class="attach">
+
     <fieldset>
         <legend>8-1. 첨부파일</legend>
 
-        <input type="file" accept="image/*,.txt" multiple required onchange="readURL(this);">
-        <input type="submit">
+        <input type="file" id="input-multiple-image" accept="image/*,.txt" multiple required onchange="readURL(this);">
         <img id="preview">
     </fieldset>
     
     <fieldset>
         <legend>8-2. 첨부파일 디자인</legend>
 
+        <!-- 업로드 버튼 -->
         <label class="input-file-button" for="input-file">업로드</label>
         <input type="file" id="input-file" accept="image/*,.txt" multiple required onchange="readURL2(this);">
         <img id="preview2">
 
+        <!-- 다운로드 버튼 -->
         <a href="/resources/imgs/dynamic-plus.png" download class="downloadBtn">
             <button type="button">이미지 다운로드</button>
         </a>
+
+        <!-- 첨부파일 필드 디자인 -->
+        <div class="filebox preview-image">
+            <input class="upload-name" value="파일선택" disabled>
+        
+            <label for="ex_filename">업로드</label>
+            <input type="file" id="ex_filename" class="upload-hidden">
+        </div>
     </fieldset>
     
     <fieldset>
@@ -462,7 +477,7 @@
                         <th scope="col">첨부파일</th>
                         <th width="50px">
                             <div class="actionBtn">
-                                <a href="javascript:void(0);" class="success" onclick="create_tr3('table_body')">
+                                <a href="javascript:void(0);" class="success" onclick="create_tr3('table_body2')">
                                     <img src="./resources/imgs/dynamic-plus.png" alt="">
                                 </a>
                             </div>
@@ -473,6 +488,7 @@
                     <tr>
                         <td>
                             <input type="file" accept="image/*,.txt" multiple required onchange="readURL3(this);">
+                            <img id="preview3">
                         </td>
                         <td>
                             <div class="actionBtn">
@@ -494,10 +510,10 @@
         <legend>9. 검색어 자동완성</legend>
 
         <input class="search_input">
+        <button type="submit">GO</button>
         <container class="rel_search">
             <ul class="pop_rel_keywords"></ul>
         </container>
-        <button type="submit"></button>
     </fieldset>
 </form>
 
