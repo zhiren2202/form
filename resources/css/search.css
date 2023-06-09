@@ -1,0 +1,51 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-size: inherit;
+  font-weight: inherit;
+  font-style: inherit;
+  color: inherit;
+}
+
+body {
+  padding: 2em;
+  font-size: 16px;
+}
+
+form {
+  margin-bottom: 2em;
+  padding: 1em;
+  border: 1px solid #999;
+}
+
+fieldset {
+  width: auto;
+  max-width: 900px;
+  padding: 1em;
+  margin: 1em auto;
+}
+
+.blind {
+  border: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%); 
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+}
+
+/* 조회/초기화1 */
+.form-2 {}
+.form-2 #recruit-year {}
+.form-2 #recruit-type {}
+.form-2 #recruit-num {
+  width: 2em;
+}
+.form-2 #recruit-date {}
+.form-2 #id_num {}
+.form-2 #id_name {}
