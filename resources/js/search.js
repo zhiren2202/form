@@ -12,15 +12,6 @@ $.datepicker.setDefaults({
     yearSuffix: '년',
 });
 
-// 문서구분
-var email_rule =  /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
-var email_domain =$("#email_domain").val();
-var mail ="";
-
-function setEmailDomain(domain){
-    $("#email_domain").val(domain);
-};
-
 // 조회/초기화1 - 채용년도
 $(document).ready(function(){
 	setDateBox();
@@ -31,9 +22,9 @@ function setDateBox(){
 
 	for(var y = (year); y >=(year-2); y--){
 		if(year == y-1) {
-			$("#recruit-year").append("<option selected value='"+ y +"'>"+ y + "년" +"</option>");
+			$("[id*='recruit-year']").append("<option selected value='"+ y +"'>"+ y + "년" +"</option>");
 		}else{
-			$("#recruit-year").append("<option value='"+ y +"'>"+ y + "년" +"</option>");
+			$("[id*='recruit-year']").append("<option value='"+ y +"'>"+ y + "년" +"</option>");
 		}
 	}
 };
@@ -41,6 +32,10 @@ function setDateBox(){
 // 조회/초기화1 - 등록일자
 $(function () {
   $(".fromDate").datepicker({
+    showOn: "both",
+    buttonImage: "http://jqueryui.com/resources/demos/datepicker/images/calendar.gif",
+    buttonImageOnly : true,
+    buttonText: "날짜선택",
     dateFormat: "yy-mm-dd",
     changeMonth: true,
     minDate: "-1M",
@@ -49,6 +44,10 @@ $(function () {
     },
   });
   $(".toDate").datepicker({
+    showOn: "both",
+    buttonImage: "http://jqueryui.com/resources/demos/datepicker/images/calendar.gif",
+    buttonImageOnly : true,
+    buttonText: "날짜선택",
     dateFormat: "yy-mm-dd",
     changeMonth: true,
     minDate: "0",
@@ -56,4 +55,35 @@ $(function () {
       $(".fromDate").datepicker("option", "maxDate", selectedDate);
     },
   });
+});
+
+// 조회/초기화1 (폼 추가 생성)
+$(function () {
+  var survey_options = document.getElementById("survey_options");
+  var add_more_fields = document.getElementById("add_more_fields");
+  var remove_fields = document.getElementById("remove_fields");
+
+  add_more_fields.onclick = function () {
+    var newField = document.createElement("input");
+    newField.setAttribute("type", "text");
+    newField.setAttribute("name", "survey_options[]");
+    newField.setAttribute("class", "survey_options");
+    newField.setAttribute("siz", 50);
+    newField.setAttribute("placeholder", "Another Field");
+    survey_options.appendChild(newField);
+  };
+
+  remove_fields.onclick = function () {
+    var input_tags = survey_options.getElementsByTagName("input");
+    if (input_tags.length > 2) {
+      survey_options.removeChild(input_tags[input_tags.length - 1]);
+    }
+  };
+
+  document.getElementById("print-values-btn").onclick = function () {
+    let allTextBoxes = document.getElementsByName("survey_options[]");
+    for (let i of allTextBoxes) {
+      console.log(i.value);
+    }
+  };
 });
