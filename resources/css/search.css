@@ -9,21 +9,8 @@
 }
 
 body {
-  padding: 2em;
+  padding: 2em 10em;
   font-size: 16px;
-}
-
-form {
-  margin-bottom: 2em;
-  padding: 1em;
-  border: 1px solid #999;
-}
-
-fieldset {
-  width: auto;
-  max-width: 900px;
-  padding: 1em;
-  margin: 1em auto;
 }
 
 .blind {
@@ -39,13 +26,257 @@ fieldset {
   white-space: nowrap;
 }
 
-/* 조회/초기화1 */
-.form-2 {}
-.form-2 #recruit-year {}
-.form-2 #recruit-type {}
-.form-2 #recruit-num {
-  width: 2em;
+img.ui-datepicker-trigger {
+  margin-left:5px; vertical-align:middle; cursor:pointer;
 }
-.form-2 #recruit-date {}
-.form-2 #id_num {}
-.form-2 #id_name {}
+
+/* form CSS */
+[class*='form-'] {
+  width: 100%;
+  overflow: hidden;
+  margin-bottom: 2em;
+  padding: 1em;
+  border: 1px solid #999;
+  text-align: center;
+  position: relative;
+}
+
+/* form-1 */
+.form-1 {
+  text-align: left;
+}
+
+.form-1 .col_wrap {
+  width: 45%;
+  float: left;
+  margin-left: 15%;
+}
+
+.form-1 .col_wrap:first-child {
+  width: 10%;
+  text-align: right;
+  margin-right: 5%;
+}
+
+.form-1 .col_wrap .label_group,
+.form-1 .col_wrap .input_group {
+  display: block;
+}
+
+.form-1 .col_wrap .input_group {
+  margin-bottom: 0.5em;
+}
+
+.form-1 .mleft0 {
+  margin-left: 0;
+}
+
+/* form-2, form-3, form-4 */
+[class*='form-'] > .label_wrap {
+  margin-right: 1em;
+}
+
+/* form-5, form-6, form-7 */
+.form-5,
+.form-6,
+.form-7 {
+  display: block;
+}
+
+[class*='form-'] > .row_wrap {
+  text-align: left;
+  width: 15%;
+  overflow: hidden;
+  float: left;
+}
+
+[class*='form-'] > .btnBox {
+  text-align: right;
+  position: absolute;
+  bottom: 1em;
+  right: 1em;
+}
+
+[class*='form-'] > .row_wrap > .label_group,
+[class*='form-'] > .row_wrap > .input_group {
+  display: block;
+  float: left;
+  width: 6em;
+}
+
+[class*='form-'] .dateInput {
+  width: 35%;
+}
+
+[class*='form-'] .dateInput > .input_group {
+  width: 17em;
+}
+
+[class*='form-'] .radioInput {
+  width: 32%;
+  margin-top: 1.5em;
+}
+
+[class*='form-'] .radioInput > .input_group {
+  width: 4em;
+}
+
+[class*='form-'] .numInput {
+  width: 30%;
+}
+
+[class*='form-'] .numInput > .input_group {
+  width: 10em;
+}
+
+[class*='form-'] > .row_wrap .txt_desc {
+  float: left;
+  font-size: 0.8em;
+  color: #999;
+}
+
+[class*='form-'] input {
+  text-align: center;
+  padding: 0.1em 0;
+}
+
+[class*='form-'] input[type='tel'] {
+  text-align: left;
+}
+
+button {
+  padding: 0.1em 0.5em;
+  background-color: #333;
+  color: #fff;
+  border: 0;
+}
+
+button:hover {
+  cursor: pointer;
+  background-color: #ccc;
+  box-shadow:1px 1px 4px rgba(0,0,0,0.2);
+}
+
+[class*='form-'] select {
+  padding: 0.1em;
+  padding-right: 1em;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url(../imgs/select_arrow.png);
+  background-repeat: no-repeat;
+  background-position: right center;
+  background-size: 10px 10px;
+}
+
+[class*='form-'] select::-ms-expand {
+  display: none;
+}
+
+/* 조회/초기화1 */
+#recruit-year {
+  width: 5.5em;
+}
+#recruit-type {
+  width: 5.5em;
+}
+#recruit-num {
+  width: 3em;
+}
+[id*='-date'] {
+  width: 6em;
+}
+#id-num {
+  width: 10em;
+}
+#id-name {
+  width: 6em;
+}
+
+@media screen and (max-width:1050px){
+  body {
+    font-size: 14px;
+  }
+  #recruit-type {
+    width: 6em;
+  }
+}
+
+@media screen and (max-width:940px){
+  body {
+    padding: 2em 4em;
+  }
+}
+
+@media screen and (max-width:510px){
+  body {
+    padding: 2em;
+    font-size: 13px;
+  }
+}
+
+/* form-8 (조회/초기화2-2) */
+.txt_desc {
+  float: left;
+  font-size: 0.8em;
+  color: #999;
+  width: 100%;
+}
+.form-8,
+.form-9 {
+  display: flex;
+  flex-wrap:wrap;
+  text-align: left;
+  position: relative;
+  min-width: 370px;
+  background-color: #f8f8f8;
+}
+
+.form-8 > div,
+.form-9 > div {
+  width: 14em;
+  margin-bottom: 1em;
+  /* border: 1px solid #999; */
+}
+
+.form-8 .long_input,
+.form-9 .long_input {
+  width: 28em;
+}
+
+.form-8 > div > span,
+.form-9 > div > span {
+  display: block;
+  float: left;
+}
+
+.form-8 > div .label_group,
+.form-9 > div .label_group {
+  width: 7em;
+  font-weight: 600;
+}
+
+.form-8 .btn,
+.form-9 .btn {
+  position: absolute;
+  bottom: 0;
+  right: 1em;
+  width: auto;
+}
+
+@media screen and (max-width:1265.6px){
+  .form-8 > div,
+  .form-9 > div {
+  width: 13em;
+  }
+
+  .form-8 .long_input,
+  .form-9 .long_input {
+    width: 26em;
+  }
+
+  .form-8 > div .label_group,
+  .form-9 > div .label_group {
+    width: 6.5em;
+  }
+}
