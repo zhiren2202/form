@@ -14,53 +14,498 @@
 </head>
 <body>
 
-<!-- 문서구분 -->
-<form action="#">
-    <select onclick="setEmailDomain(this.value);return false;">
-        <option value="" selected>문서구분</option>
-        <option value="등록일자">등록일자</option>
-        <option value="등록일자">등록일자</option>
-        <option value="수험번호">수험번호</option>
-        <option value="채용년도">채용년도</option>
-    </select>
-    <input type="text" name="" id="document">
+<!-- 조회1 -->
+<h2>form-1</h2>
+<form action="#" class="form-1">
+    <!-- 문서구분 -->
+    <div class="col_wrap mleft0">
+        <span class="label_group"><label for="">문서구분</label></span>
+        <span class="input_group">
+            <select>
+                <option value="등록일자">구분1</option>
+                <option value="등록일자">구분2</option>
+                <option value="수험번호">구분3</option>
+                <option value="채용년도">구분4</option>
+            </select>
+        </span>
+    </div>
+
+    <!-- 등록일자 -->
+    <div class="col_wrap mleft0">
+        <span class="label_group"><label for="recruit-date">등록일자</label></span>
+        <span class="input_group">
+            <input type="text" id="recruit-date" class="fromDate" placeholder="yyyy-mm-dd"> ~
+            <input type="text" id="recruit-date" class="toDate" placeholder="yyyy-mm-dd">
+            <button type="submit">조회</button>
+        </span>
+    </div>
+
+    <!-- 등록일자 -->
+    <div class="col_wrap">
+        <span class="label_group"><label for="recruit-date">등록일자</label></span>
+        <span class="input_group">
+            <input type="text" id="recruit-date" class="fromDate" placeholder="yyyy-mm-dd"> ~
+            <input type="text" id="recruit-date" class="toDate" placeholder="yyyy-mm-dd">
+            <button type="submit">조회</button>
+        </span>
+    </div>
+
+    <!-- 수험번호 -->
+    <div class="col_wrap">
+        <span class="label_group"><label for="id-num">수험번호</label></span>
+        <span class="input_group">
+            <input type="tel" id="id-num" name="id-num">
+            <button type="submit">조회</button>
+        </span>
+    </div>
+
+    <!-- 채용년도-->
+    <div class="col_wrap">
+        <span class="label_group"><label for="recruit-year">채용년도</label></span>
+        <span class="input_group">
+            <select class="box" id="recruit-year"></select>
+            <button type="submit">조회</button>
+        </span>
+    </div>
+</form>
+
+<!-- 조회2 -->
+<h2>form-2</h2>
+<form action="#" class="form-2">
+    <!-- 구분 -->
+    <span class="label_wrap">
+        <label for="">구분</label>
+        <select class="box" id="recruit-type">
+            <option value="">구분1</option>
+            <option value="">구분2</option>
+            <option value="">구분3</option>
+        </select>
+    </span>
+
+    <!-- 수험번호 -->
+    <span class="label_wrap">
+        <label for="id-num">수험번호</label>
+        <input type="tel" id="id-num" name="id-num">
+    </span>
+
+    <!-- 조회 버튼 -->
+    <span class="btnBox">
+        <button type="submit">조회</button>
+    </span>
+</form>
+
+<!-- 조회3 -->
+<h2>form-3</h2>
+<form action="#" class="form-3">
+    <!-- 구분 -->
+    <span class="label_wrap">
+        <label for="">구분</label>
+        <select class="box" id="recruit-type">
+            <option value="">항목1</option>
+            <option value="">항목2</option>
+            <option value="">항목3</option>
+        </select>
+    </span>
+
+    <!-- 조회항목 -->
+    <span class="label_wrap">
+        <label for="">조회항목</label>
+        <select class="box" id="recruit-type">
+            <option value="" selected disabled>조회항목</option>
+            <option value="">항목1</option>
+            <option value="">항목2</option>
+            <option value="">항목3</option>
+        </select>
+    </span>
+
+    <!-- 조회 버튼 -->
+    <span class="btnBox">
+        <button type="submit">조회</button>
+    </span>
+</form>
+
+<!-- 조회4 -->
+<h2>form-4</h2>
+<form action="#" class="form-4">
+    <!-- 채용년도-->
+    <span class="label_wrap">
+        <label for="">채용년도</label>
+        <select class="box" id="recruit-year"></select>
+    </span>
+
+    <!-- 채용구분-->
+    <span class="label_wrap">
+        <label for="">채용구분</label>
+        <select class="box" id="recruit-type">
+            <option value="">구분1</option>
+            <option value="">구분2</option>
+            <option value="">구분3</option>
+        </select>
+    </span>
+
+    <!-- 조회 버튼 -->
+    <span class="btnBox">
+        <button type="submit">조회</button>
+    </span>
 </form>
 
 <!-- 조회/초기화1 -->
-<form action="#" class="form-2">
+<h2>form-5</h2>
+<form action="#" class="form-5">
     <!-- 채용년도-->
-    <select class="box" id="recruit-year">
-        <option disabled selected>채용년도</option>
-    </select>
+    <div class="row_wrap">
+        <span class="label_group"><label for="">채용년도</label></span>
+        <span><select class="box" id="recruit-year"></select></span>
+    </div>
     
     <!-- 채용구분-->
-    <select class="box" id="recruit-type">
-        <option value="" selected>채용구분</option>
-        <option value="">구분1</option>
-        <option value="">구분2</option>
-        <option value="">구분3</option>
-    </select>
+    <div class="row_wrap">
+        <span class="label_group"><label for="">채용구분</label></span>
+        <span>
+            <select class="box" id="recruit-type">
+                <option value="">구분1</option>
+                <option value="">구분2</option>
+                <option value="">구분3</option>
+            </select>
+        </span>
+    </div>
     
     <!-- 채용차수 -->
-    <label for="recruit-num">채용차수</label>
-    <input type="tel" name="recruit-num" id="recruit-num"><br>
+    <div class="row_wrap">
+        <span class="label_group"><label for="recruit-num">채용차수</label></span>
+        <span class="input_group"><input type="tel" name="recruit-num" id="recruit-num"></span>
+    </div>
     
     <!-- 등록일자 -->
-    <label for="recruit-date">등록일자</label>
-    <input type="text" id="recruit-date" class="fromDate" placeholder="yyyy-mm-dd"> ~
-    <input type="text" id="recruit-date" class="toDate" placeholder="yyyy-mm-dd"><br>
+    <div class="row_wrap dateInput">
+        <span class="label_group"><label for="recruit-date">등록일자</label></span>
+        <span class="input_group">
+            <input type="text" id="recruit-date" class="fromDate" placeholder="yyyy-mm-dd"> ~
+            <input type="text" id="recruit-date" class="toDate" placeholder="yyyy-mm-dd">
+        </span>
+    </div>
+    
+    <!-- 수험번호 -->
+    <div class="row_wrap">
+        <span class="label_group"><label for="id-num">수험번호</label></span>
+        <span class="input_group"><input type="tel" id="id-num" name="id-num"></span>
+    </div>
+    
+    <!-- 성명 -->
+    <div class="row_wrap">
+        <span class="label_group"><label for="id-name">성명</label></span>
+        <span class="input_group"><input type="text" id="id-name" name="name"></span>
+    </div>
+    
+    <!-- 조회/초기화 버튼 -->
+    <div class="btnBox">
+        <button type="submit">조회</button>
+        <button type="reset">초기화</button>
+    </div>
+</form>
+
+<!-- 조회/초기화2 -->
+<h2>form-6</h2>
+<form action="#" class="form-6">
+    <!-- 채용년도-->
+    <div class="row_wrap">
+        <span class="label_group"><label for="">채용년도</label></span>
+        <span class="input_group"><select class="box" id="recruit-year"></select></div>
+    </div>
+    
+    <!-- 채용구분-->
+    <div class="row_wrap">
+        <span class="label_group"><label for="">채용구분</label></span>
+        <span class="input_group">
+            <select class="box" id="recruit-type">
+                <option value="">구분1</option>
+                <option value="">구분2</option>
+                <option value="">구분3</option>
+            </select>
+        </span>
+    </div>
+
+    <!-- 채용차수 -->
+    <div class="row_wrap">
+        <span class="label_group"><label for="recruit-num">채용차수</label></span>
+        <span class="input_group"><input type="tel" name="recruit-num" id="recruit-num"></span>
+    </div>
+
+    <!-- 전형단계-->
+    <div class="row_wrap">
+        <span class="label_group"><label for="">전형단계</label></span>
+        <span class="input_group">
+            <select class="box" id="recruit-type">
+                <option value="">단계1</option>
+                <option value="">단계2</option>
+                <option value="">단계3</option>
+            </select>
+        </span>
+    </div>
+
+    <!-- 등록일자 -->
+    <div class="row_wrap dateInput">
+        <span class="label_group"><label for="recruit-date">등록일자</label></span>
+        <span class="input_group">
+            <input type="text" id="recruit-date" class="fromDate" placeholder="yyyy-mm-dd"> ~
+            <input type="text" id="recruit-date" class="toDate" placeholder="yyyy-mm-dd">
+        </span>
+    </div>
+
+    <!-- 평가결과-->
+    <div class="row_wrap">
+        <span class="label_group"><label for="">평가결과</label></span>
+        <span class="input_group">
+            <select class="box" id="recruit-type">
+                <option value="">결과1</option>
+                <option value="">결과2</option>
+                <option value="">결과3</option>
+            </select>
+        </span>
+    </div>
 
     <!-- 수험번호 -->
-    <label for="id_num">수험번호</label>
-    <input type="text" id="id_num" name="id_num" pattern="\d{13}"><br>
+    <div class="row_wrap numInput">
+        <span class="label_group"><label for="id-num">수험번호</label></span>
+        <span class="input_group"><input type="tel" id="id-num" name="id-num" pattern="\d{13}"></span>
+    </div>
 
     <!-- 성명 -->
-    <label for="id_name">이름</label>
-    <input type="text" id="id_name" name="name"><br>
+    <div class="row_wrap">
+        <span class="label_group"><label for="id-name">성명</label></span>
+        <span class="input_group"><input type="text" id="id-name" name="name"></span>
+    </div>
 
     <!-- 조회/초기화 버튼 -->
-    <button type="submit">조회</button>
-    <button type="reset">초기화</button>
+    <div class="btnBox">
+        <button type="submit">조회</button>
+        <button type="reset">초기화</button>
+    </div>
+</form>
+
+<!-- 조회/초기화3 -->
+<h2>form-7</h2>
+<form action="#" class="form-7">
+    <!-- 제출자성명 -->
+    <div class="row_wrap">
+        <span class="label_group"><label for="id-name">제출자성명</label></span>
+        <span class="input_group"><input type="text" id="id-name" name="name"></span>
+    </div>
+
+    <!-- 생년월일 -->
+    <div class="row_wrap">
+        <span class="label_group"><label for="">생년월일</label></span>
+        <span class="input_group"><input type="tel" id="birth-date" name="birth" pattern="\d{6}" placeholder="YYMMDD" title="YYMMDD와 같은 6자리 숫자" maxlength="6"></div>
+    </div>
+
+    <!-- 문서열람번호 -->
+    <div class="row_wrap dateInput">
+        <span class="label_group"><label for="">문서열람번호</label></span>
+        <span class="input_group"><input type="tel" name="" id=""></span>
+    </div>
+    
+    <!-- 전자지갑주소 -->
+    <div class="row_wrap dateInput">
+        <span class="label_group"><label for="e-wallet">전자지갑주소</label></span>
+        <span class="input_group"><input type="text" id="e-wallet" name="e-wallet"></span>
+    </div>
+
+    <!-- 유통상태-->
+    <div class="row_wrap">
+        <span class="label_group"><label for="">유통상태</label></span>
+        <span class="input_group">
+            <select class="box" id="">
+                <option value="">유통상태1</option>
+                <option value="">유통상태2</option>
+                <option value="">유통상태3</option>
+            </select>
+        </span>
+    </div>
+
+    <!-- 제출일자 -->
+    <div class="row_wrap dateInput">
+        <span class="label_group"><label for="submit-date">제출일자</label></span>
+        <span class="input_group">
+            <input type="text" id="submit-date" class="fromDate" placeholder="yyyy-mm-dd"> ~
+            <input type="text" id="submit-date" class="toDate" placeholder="yyyy-mm-dd">
+        </span>
+        <p class="txt_desc">※ 1년 전 자료까지만 조회 가능</p>
+    </div>
+
+    <!-- 제출일자 - 라디오 -->
+    <div class="row_wrap radioInput">
+        <span class="input_group">
+            <label for="submit-radio1">전일</label>
+            <input type="radio" name="submit-radio" id="submit-radio1" checked>
+        </span>
+        <span class="input_group">
+            <label for="submit-radio2">당일</label>
+            <input type="radio" name="submit-radio" id="submit-radio2">
+        </span>
+        <span class="input_group">
+            <label for="submit-radio3">1개월</label>
+            <input type="radio" name="submit-radio" id="submit-radio3">
+        </span>
+    </div>
+
+    <!-- 조회/초기화 버튼 -->
+    <div class="btnBox">
+        <button type="submit">조회</button>
+        <button type="reset">초기화</button>
+    </div>
+</form>
+
+<!-- 조회/초기화2-2 -->
+<h2>form-8</h2>
+<form action="#" class="form-8">
+    <!-- 채용년도-->
+    <div>
+        <span class="label_group"><label for="">채용년도</label></span>
+        <span class="input_group"><select class="box" id="recruit-year"></select></div>
+    </div>
+    
+    <!-- 채용구분-->
+    <div>
+        <span class="label_group"><label for="">채용구분</label></span>
+        <span class="input_group">
+            <select class="box" id="recruit-type">
+                <option value="">구분1</option>
+                <option value="">구분2</option>
+                <option value="">구분3</option>
+            </select>
+        </span>
+    </div>
+
+    <!-- 채용차수 -->
+    <div>
+        <span class="label_group"><label for="recruit-num">채용차수</label></span>
+        <span class="input_group"><input type="tel" name="recruit-num" id="recruit-num"></span>
+    </div>
+
+    <!-- 전형단계-->
+    <div>
+        <span class="label_group"><label for="">전형단계</label></span>
+        <span class="input_group">
+            <select class="box" id="recruit-type">
+                <option value="">단계1</option>
+                <option value="">단계2</option>
+                <option value="">단계3</option>
+            </select>
+        </span>
+    </div>
+
+    <!-- 등록일자 -->
+    <div class="long_input">
+        <span class="label_group">
+            <label for="recruit-date">등록일자</label>
+        </span>
+        <span class="input_group">
+            <input type="text" id="recruit-date" class="fromDate" placeholder="yyyy-mm-dd"> ~
+            <input type="text" id="recruit-date" class="toDate" placeholder="yyyy-mm-dd">
+        </span>
+    </div>
+
+    <!-- 평가결과-->
+    <div>
+        <span class="label_group"><label for="">평가결과</label></span>
+        <span class="input_group">
+            <select class="box" id="recruit-type">
+                <option value="">결과1</option>
+                <option value="">결과2</option>
+                <option value="">결과3</option>
+            </select>
+        </span>
+    </div>
+
+    <!-- 수험번호 -->
+    <div class="long_input">
+        <span class="label_group"><label for="id-num">수험번호번호</label></span>
+        <span class="input_group"><input type="tel" id="id-num" name="id-num" pattern="\d{13}"></span>
+    </div>
+
+    <!-- 성명 -->
+    <div>
+        <span class="label_group"><label for="id-name">성명</label></span>
+        <span class="input_group"><input type="text" id="id-name" name="name"></span>
+    </div>
+
+    <!-- 조회/초기화 버튼 -->
+    <div class="btn">
+        <button type="submit">조회</button>
+        <button type="reset">초기화</button>
+    </div>
+</form>
+
+<!-- 조회/초기화3-2 -->
+<h2>form-9</h2>
+<form action="#" class="form-9">
+    <!-- 제출자성명 -->
+    <div>
+        <span class="label_group"><label for="id-name">제출자성명</label></span>
+        <span class="input_group"><input type="text" id="id-name" name="name"></span>
+    </div>
+
+    <!-- 생년월일 -->
+    <div>
+        <span class="label_group"><label for="">생년월일</label></span>
+        <span class="input_group"><input type="tel" id="birth-date" name="birth" pattern="\d{6}" placeholder="YYMMDD" title="YYMMDD와 같은 6자리 숫자" maxlength="6"></div>
+    </div>
+
+    <!-- 문서열람번호 -->
+    <div class="long_input">
+        <span class="label_group"><label for="">문서열람번호</label></span>
+        <span class="input_group"><input type="tel" name="" id=""></span>
+    </div>
+    
+    <!-- 전자지갑주소 -->
+    <div class="long_input">
+        <span class="label_group"><label for="e-wallet">전자지갑주소</label></span>
+        <span class="input_group"><input type="text" id="e-wallet" name="e-wallet"></span>
+    </div>
+
+    <!-- 유통상태-->
+    <div>
+        <span class="label_group"><label for="">유통상태</label></span>
+        <span class="input_group">
+            <select class="box" id="">
+                <option value="">유통상태1</option>
+                <option value="">유통상태2</option>
+                <option value="">유통상태3</option>
+            </select>
+        </span>
+    </div>
+
+    <!-- 제출일자 -->
+    <div class="long_input">
+        <span class="label_group"><label for="submit-date">제출일자</label></span>
+        <span class="input_group">
+            <input type="text" id="submit-date" class="fromDate" placeholder="yyyy-mm-dd"> ~
+            <input type="text" id="submit-date" class="toDate" placeholder="yyyy-mm-dd">
+        </span>
+        <p class="txt_desc">※ 1년 전 자료까지만 조회 가능</p>
+    </div>
+
+    <!-- 제출일자 - 라디오 -->
+    <div>
+        <span class="input_group">
+            <label for="submit-radio1">전일</label>
+            <input type="radio" name="submit-radio" id="submit-radio1" checked>
+        </span>
+        <span class="input_group">
+            <label for="submit-radio2">당일</label>
+            <input type="radio" name="submit-radio" id="submit-radio2">
+        </span>
+        <span class="input_group">
+            <label for="submit-radio3">1개월</label>
+            <input type="radio" name="submit-radio" id="submit-radio3">
+        </span>
+    </div>
+
+    <!-- 조회/초기화 버튼 -->
+    <div class="btn">
+        <button type="submit">조회</button>
+        <button type="reset">초기화</button>
+    </div>
 </form>
 
 </body>
