@@ -54,13 +54,12 @@ img.ui-datepicker-trigger {
 
 [class*='form-'] select {
   padding: 0.1em;
-  background-color: none;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
   background-image: url(../imgs/select_arrow.png);
   background-repeat: no-repeat;
-  background-position: right 0.5em center;
+  background-position: right 0.2em center;
   background-size: 10px 10px;
 }
 
