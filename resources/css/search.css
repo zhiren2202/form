@@ -54,6 +54,7 @@ img.ui-datepicker-trigger {
 
 [class*='form-'] select {
   padding: 0.1em;
+  background-color: none;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -352,7 +353,7 @@ img.ui-datepicker-trigger {
 
 @media screen and (max-width:560px){
   body {
-    padding: 2em;
+    padding: 0.5em;
     font-size: 13px;
   }
 }
