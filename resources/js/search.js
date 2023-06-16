@@ -12,7 +12,7 @@ $.datepicker.setDefaults({
     yearSuffix: '년',
 });
 
-// 조회/초기화1 - 채용년도
+// 채용년도
 $(document).ready(function(){
 	setDateBox();
 });
@@ -82,6 +82,70 @@ $(function () {
     onClose: function (selectedDate) {
       $("#fromDate2").datepicker("option", "maxDate", selectedDate);
     },
+  });
+});
+
+// 조회1 - 수험번호
+$(function () {
+  var cnt = 0;
+
+  $("#BtnFileAdd1_1").click(function () {
+    var oEl = $(".input-multi-file-1_1").find(".flex-table-1_1");
+
+    if (oEl.find(".flex-box-1_1").length < 5) {
+      oEl.find(".flex-box-1_1").last().clone().appendTo(oEl);
+      oEl.find(".flex-box-1_1").last().find("input").val("");
+      oEl.find(".flex-box-1_1").last().find("input").attr("id", "id-num");
+    } else {
+      alert("조회 가능한 개수는 최대 5개 입니다.");
+    }
+
+    return false;
+  });
+
+  $("#BtnFileSubtract1_1").click(function () {
+    var oEl = $(".input-multi-file-1_1").find(".flex-table-1_1");
+
+    if (oEl.find(".flex-box-1_1").length > 1) {
+      oEl.find(".flex-box-1_1").last().remove();
+      --cnt;
+    } else {
+      alert("조회 가능한 개수는 최소 1개 입니다.");
+    }
+
+    return false;
+  });
+});
+
+// 조회1 - 채용년도
+$(function () {
+  var cnt = 0;
+
+  $("#BtnFileAdd1_2").click(function () {
+    var oEl = $(".input-multi-file-1_2").find(".flex-table-1_2");
+
+    if (oEl.find(".flex-box-1_2").length < 5) {
+      oEl.find(".flex-box-1_2").last().clone().appendTo(oEl);
+      oEl.find(".flex-box-1_2").last().find("select").val("");
+      oEl.find(".flex-box-1_2").last().find("select").attr("id", "recruit-year");
+    } else {
+      alert("추가 조회 가능 개수는 최대 5개 입니다.");
+    }
+
+    return false;
+  });
+
+  $("#BtnFileSubtract1_2").click(function () {
+    var oEl = $(".input-multi-file-1_2").find(".flex-table-1_2");
+
+    if (oEl.find(".flex-box-1_2").length > 1) {
+      oEl.find(".flex-box-1_2").last().remove();
+      --cnt;
+    } else {
+      alert("추가 조회 가능 개수는 최소 1개 입니다.");
+    }
+
+    return false;
   });
 });
 
@@ -166,69 +230,5 @@ $(function () {
     onClose: function (selectedDate) {
       $("#fromDate5").datepicker("option", "maxDate", selectedDate);
     },
-  });
-});
-
-// form-1_1
-$(function () {
-  var cnt = 0;
-
-  $("#BtnFileAdd1_1").click(function () {
-    var oEl = $(".input-multi-file-1_1").find(".flex-table-1_1");
-
-    if (oEl.find(".flex-box-1_1").length < 5) {
-      oEl.find(".flex-box-1_1").last().clone().appendTo(oEl);
-      oEl.find(".flex-box-1_1").last().find("input").val("");
-      oEl.find(".flex-box-1_1").last().find("input").attr("id", "id-num");
-    } else {
-      alert("조회 가능한 개수는 최대 5개 입니다.");
-    }
-
-    return false;
-  });
-
-  $("#BtnFileSubtract1_1").click(function () {
-    var oEl = $(".input-multi-file-1_1").find(".flex-table-1_1");
-
-    if (oEl.find(".flex-box-1_1").length > 1) {
-      oEl.find(".flex-box-1_1").last().remove();
-      --cnt;
-    } else {
-      alert("조회 가능한 개수는 최소 1개 입니다.");
-    }
-
-    return false;
-  });
-});
-
-// form-1_2
-$(function () {
-  var cnt = 0;
-
-  $("#BtnFileAdd1_2").click(function () {
-    var oEl = $(".input-multi-file-1_2").find(".flex-table-1_2");
-
-    if (oEl.find(".flex-box-1_2").length < 5) {
-      oEl.find(".flex-box-1_2").last().clone().appendTo(oEl);
-      oEl.find(".flex-box-1_2").last().find("select").val("");
-      oEl.find(".flex-box-1_2").last().find("select").attr("id", "recruit-year");
-    } else {
-      alert("추가 조회 가능 개수는 최대 5개 입니다.");
-    }
-
-    return false;
-  });
-
-  $("#BtnFileSubtract1_2").click(function () {
-    var oEl = $(".input-multi-file-1_2").find(".flex-table-1_2");
-
-    if (oEl.find(".flex-box-1_2").length > 1) {
-      oEl.find(".flex-box-1_2").last().remove();
-      --cnt;
-    } else {
-      alert("추가 조회 가능 개수는 최소 1개 입니다.");
-    }
-
-    return false;
   });
 });
