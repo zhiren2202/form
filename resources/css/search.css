@@ -122,7 +122,6 @@ img.ui-datepicker-trigger {
   display: block;
   width: 60%;
   margin: 0 auto;
-  /* background-color: antiquewhite; */
 }
 
 .form-1 .col_wrap {
@@ -148,29 +147,7 @@ img.ui-datepicker-trigger {
 .form-1 .col_wrap #survey_options {
   float: left;
   width: 70%;
-  /* background-color: #ccc; */
   position: relative;
-}
-
-/* col_wrap_year */
-.form-1 .col_wrap_year {
-  width: 80%;
-  float: left;
-  margin-left: 20%;
-  position: relative;
-}
-.form-1 .col_wrap_year #survey_options {
-  float: left;
-  width: 70%;
-  height: 2em;
-  position: relative;
-}
-
-.form-1 .col_wrap .survey_controls {
-  float: left;
-  width: 30%;
-  /* background-color: #999; */
-  text-align: right;
 }
 
 .form-1 .mleft0 {
@@ -230,7 +207,6 @@ img.ui-datepicker-trigger {
 .form-7 > div {
   width: 14em;
   margin-bottom: 1em;
-  /* border: 1px solid #999; */
 }
 
 .form-5 .long_input,
@@ -266,9 +242,43 @@ img.ui-datepicker-trigger {
   text-align: right;
 }
 
+/* 동적 태그 만들기 */
+[class*='form-'] .box-buttons {
+  text-align: left;
+  font-size: 0;
+}
+
+[class*='form-'] .box-buttons .btn {
+  margin: 0 5px;
+  line-height: 40px;
+  height: 40px;
+  font-size: 1rem;
+  padding: 0 20px;
+  border: 0;
+  border-radius: 3px;
+}
+
+[class*='form-'] .btn {
+  color: white;
+  text-decoration: none;
+}
+
+[class*='form-'] .box-buttons .btn-blue {
+  background-color: #0088cf;
+}
+
+[class*='form-'] .box-buttons .btn-gray {
+  background-color: #6b7f89;
+}
+
+/* 반응형 */
 @media screen and (max-width:1270px){
   .txt_desc {
     margin-left: 8.2em;
+  }
+
+  .form-1 > fieldset {
+    width: 70%;
   }
 
   .form-5 > div,
@@ -287,12 +297,6 @@ img.ui-datepicker-trigger {
   .form-6 > div .label_group,
   .form-7 > div .label_group {
     width: 6.5em;
-  }
-}
-
-@media screen and (max-width:1280px) {
-  .form-1 > fieldset {
-    width: 70%;
   }
 }
 
@@ -355,33 +359,4 @@ img.ui-datepicker-trigger {
     padding: 0.5em;
     font-size: 13px;
   }
-}
-
-/* 동적 태그 만들기 */
-[class*='form-'] .box-buttons {
-  text-align: left;
-  font-size: 0;
-}
-
-[class*='form-'] .box-buttons .btn {
-  margin: 0 5px;
-  line-height: 40px;
-  height: 40px;
-  font-size: 1rem;
-  padding: 0 20px;
-  border: 0;
-  border-radius: 3px;
-}
-
-[class*='form-'] .btn {
-  color: white;
-  text-decoration: none;
-}
-
-[class*='form-'] .box-buttons .btn-blue {
-  background-color: #0088cf;
-}
-
-[class*='form-'] .box-buttons .btn-gray {
-  background-color: #6b7f89;
 }
