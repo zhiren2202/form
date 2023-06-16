@@ -39,100 +39,7 @@ img.ui-datepicker-trigger {
   border: 1px solid #999;
   text-align: center;
   position: relative;
-}
-
-/* form-1 */
-.form-1 {
-  text-align: left;
-}
-
-.form-1 .col_wrap {
-  width: 45%;
-  float: left;
-  margin-left: 15%;
-}
-
-.form-1 .col_wrap:first-child {
-  width: 10%;
-  text-align: right;
-  margin-right: 5%;
-}
-
-.form-1 .col_wrap .label_group,
-.form-1 .col_wrap .input_group {
-  display: block;
-}
-
-.form-1 .col_wrap .input_group {
-  margin-bottom: 0.5em;
-}
-
-.form-1 .mleft0 {
-  margin-left: 0;
-}
-
-/* form-2, form-3, form-4 */
-[class*='form-'] > .label_wrap {
-  margin-right: 1em;
-}
-
-/* form-5, form-6, form-7 */
-.form-5,
-.form-6,
-.form-7 {
-  display: block;
-}
-
-[class*='form-'] > .row_wrap {
-  text-align: left;
-  width: 15%;
-  overflow: hidden;
-  float: left;
-}
-
-[class*='form-'] > .btnBox {
-  text-align: right;
-  position: absolute;
-  bottom: 1em;
-  right: 1em;
-}
-
-[class*='form-'] > .row_wrap > .label_group,
-[class*='form-'] > .row_wrap > .input_group {
-  display: block;
-  float: left;
-  width: 6em;
-}
-
-[class*='form-'] .dateInput {
-  width: 35%;
-}
-
-[class*='form-'] .dateInput > .input_group {
-  width: 17em;
-}
-
-[class*='form-'] .radioInput {
-  width: 32%;
-  margin-top: 1.5em;
-}
-
-[class*='form-'] .radioInput > .input_group {
-  width: 4em;
-}
-
-[class*='form-'] .numInput {
-  width: 30%;
-}
-
-[class*='form-'] .numInput > .input_group {
-  width: 10em;
-}
-
-[class*='form-'] > .row_wrap .txt_desc {
-  float: left;
-  font-size: 0.8em;
-  color: #999;
+  background-color: #f8f8f8;
 }
 
 [class*='form-'] input {
@@ -142,19 +49,6 @@ img.ui-datepicker-trigger {
 
 [class*='form-'] input[type='tel'] {
   text-align: left;
-}
-
-button {
-  padding: 0.1em 0.5em;
-  background-color: #333;
-  color: #fff;
-  border: 0;
-}
-
-button:hover {
-  cursor: pointer;
-  background-color: #ccc;
-  box-shadow:1px 1px 4px rgba(0,0,0,0.2);
 }
 
 [class*='form-'] select {
@@ -173,7 +67,33 @@ button:hover {
   display: none;
 }
 
-/* 조회/초기화1 */
+[class*='form-'] fieldset {
+  border: 0;
+}
+
+[class*='form-'] .label_group {
+  font-weight: 600;
+}
+
+.btnBox {
+  position: absolute;
+  width: auto;
+}
+
+.btnBox button {
+  padding: 0.1em 0.5em;
+  background-color: #333;
+  color: #fff;
+  border: 0;
+}
+
+.btnBox button:hover {
+  cursor: pointer;
+  background-color: #ccc;
+  box-shadow:1px 1px 4px rgba(0,0,0,0.2);
+}
+
+/* input 요소 크기 */
 #recruit-year {
   width: 5.5em;
 }
@@ -183,7 +103,7 @@ button:hover {
 #recruit-num {
   width: 3em;
 }
-[id*='-date'] {
+[id*='Date'] {
   width: 6em;
 }
 #id-num {
@@ -193,10 +113,200 @@ button:hover {
   width: 6em;
 }
 
+/* form-1 */
+.form-1 {
+  text-align: left;
+  min-width: 380px;
+}
+
+.form-1 > fieldset {
+  display: block;
+  width: 80%;
+  margin: 0 auto;
+  /* background-color: antiquewhite; */
+}
+
+.form-1 .col_wrap {
+  width: 80%;
+  float: left;
+  margin-left: 20%;
+  position: relative;
+}
+
+.form-1 .col_wrap:first-child {
+  width: 20%;
+}
+
+.form-1 .col_wrap .label_group,
+.form-1 .col_wrap .input_group {
+  display: block;
+}
+
+.form-1 .col_wrap .input_group {
+  margin-bottom: 0.5em;
+}
+
+.form-1 .col_wrap #survey_options {
+  float: left;
+  width: 70%;
+  /* background-color: #ccc; */
+  position: relative;
+}
+
+/* col_wrap_year */
+.form-1 .col_wrap_year {
+  width: 80%;
+  float: left;
+  margin-left: 20%;
+  position: relative;
+}
+.form-1 .col_wrap_year #survey_options {
+  float: left;
+  width: 70%;
+  height: 2em;
+  /* border: 1px solid #333; */
+  position: relative;
+}
+/* //col_wrap_year */
+
+.form-1 .col_wrap .survey_controls {
+  float: left;
+  width: 30%;
+  /* background-color: #999; */
+  text-align: right;
+}
+
+.form-1 .mleft0 {
+  margin-left: 0;
+}
+
+.form-1 .item {
+  position: relative;
+}
+
+.form-1 .btnBox {
+  bottom: 0.5em;
+  right: 0;
+}
+
+/* form-2, form-3, form-4 */
+.form-2,
+.form-3,
+.form-4 {
+  min-width: 420px;
+}
+
+.form-2 > .label_wrap,
+.form-3 > .label_wrap,
+.form-4 > .label_wrap {
+  margin-right: 1em;
+}
+
+.form-2 > .label_wrap label,
+.form-3 > .label_wrap label,
+.form-4 > .label_wrap label {
+  font-weight: 600;
+}
+
+.form-2 > .btnBox,
+.form-3 > .btnBox,
+.form-4 > .btnBox {
+  bottom: 1em;
+  right: 1em;
+}
+
+/* form-5, form-6, form-7 (조회/초기화) */
+.txt_desc {
+  float: left;
+  font-size: 0.8em;
+  color: #999;
+  width: 100%;
+  margin-left: 8.8em;
+}
+
+.form-5,
+.form-6,
+.form-7 {
+  display: flex;
+  flex-wrap:wrap;
+  text-align: left;
+  position: relative;
+  min-width: 370px;
+  background-color: #f8f8f8;
+}
+
+.form-5 > div,
+.form-6 > div,
+.form-7 > div {
+  width: 14em;
+  margin-bottom: 1em;
+  /* border: 1px solid #999; */
+}
+
+.form-5 .long_input,
+.form-6 .long_input,
+.form-7 .long_input {
+  width: 28em;
+}
+
+.form-5 > div > span,
+.form-6 > div > span,
+.form-7 > div > span {
+  display: block;
+  float: left;
+}
+
+.form-5 > div .label_group,
+.form-6 > div .label_group,
+.form-7 > div .label_group {
+  width: 7em;
+  background-color: #e7e7e7;
+  line-height: 1.5em;
+}
+
+.form-5 .btnBox,
+.form-6 .btnBox,
+.form-7 .btnBox {
+  bottom: 0;
+  right: 1em;
+  text-align: right;
+}
+
+@media screen and (max-width:1270px){
+  .txt_desc {
+    margin-left: 8.2em;
+  }
+
+  .form-5 > div,
+  .form-6 > div,
+  .form-7 > div {
+  width: 13em;
+  }
+
+  .form-5 .long_input,
+  .form-6 .long_input,
+  .form-7 .long_input {
+    width: 26em;
+  }
+
+  .form-5 > div .label_group,
+  .form-6 > div .label_group,
+  .form-7 > div .label_group {
+    width: 6.5em;
+  }
+}
+
+@media screen and (max-width:1150px) {
+  .form-1 > fieldset {
+    width: 60%;
+  }
+}
+
 @media screen and (max-width:1050px){
   body {
     font-size: 14px;
   }
+
   #recruit-type {
     width: 6em;
   }
@@ -208,75 +318,59 @@ button:hover {
   }
 }
 
-@media screen and (max-width:510px){
+@media screen and (max-width:800px){
+  .form-1 .mleft0 {
+    margin-left: 0;
+  }
+  .form-1 > fieldset {
+    width: 70%;
+  }
+}
+
+@media screen and (max-width:680px) {
+  .form-1 > fieldset {
+    width: 90%;
+  }
+}
+
+@media screen and (max-width:590px) {
+  .form-1 > fieldset {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width:520px){
   body {
     padding: 2em;
     font-size: 13px;
   }
 }
 
-/* form-8 (조회/초기화2-2) */
-.txt_desc {
-  float: left;
-  font-size: 0.8em;
-  color: #999;
-  width: 100%;
-}
-.form-8,
-.form-9 {
-  display: flex;
-  flex-wrap:wrap;
+/* 동적 태그 만들기 */
+[class*='form-'] .box-buttons {
   text-align: left;
-  position: relative;
-  min-width: 370px;
-  background-color: #f8f8f8;
+  font-size: 0;
 }
 
-.form-8 > div,
-.form-9 > div {
-  width: 14em;
-  margin-bottom: 1em;
-  /* border: 1px solid #999; */
+[class*='form-'] .box-buttons .btn {
+  margin: 0 5px;
+  line-height: 40px;
+  height: 40px;
+  font-size: 1rem;
+  padding: 0 20px;
+  border: 0;
+  border-radius: 3px;
 }
 
-.form-8 .long_input,
-.form-9 .long_input {
-  width: 28em;
+[class*='form-'] .btn {
+  color: white;
+  text-decoration: none;
 }
 
-.form-8 > div > span,
-.form-9 > div > span {
-  display: block;
-  float: left;
+[class*='form-'] .box-buttons .btn-blue {
+  background-color: #0088cf;
 }
 
-.form-8 > div .label_group,
-.form-9 > div .label_group {
-  width: 7em;
-  font-weight: 600;
-}
-
-.form-8 .btn,
-.form-9 .btn {
-  position: absolute;
-  bottom: 0;
-  right: 1em;
-  width: auto;
-}
-
-@media screen and (max-width:1265.6px){
-  .form-8 > div,
-  .form-9 > div {
-  width: 13em;
-  }
-
-  .form-8 .long_input,
-  .form-9 .long_input {
-    width: 26em;
-  }
-
-  .form-8 > div .label_group,
-  .form-9 > div .label_group {
-    width: 6.5em;
-  }
+[class*='form-'] .box-buttons .btn-gray {
+  background-color: #6b7f89;
 }

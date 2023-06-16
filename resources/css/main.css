@@ -205,6 +205,54 @@ input.survey_options:focus {
   height: 1em;
 }
 
+/* 6-3. 동적 태그 만들기*/
+#contents .box-buttons {
+  margin-top: 50px;
+  text-align: center;
+  font-size: 0;
+}
+
+#contents .box-buttons .btn {
+  margin: 0 5px;
+  line-height: 40px;
+  height: 40px;
+  font-size: 1rem;
+  padding: 0 20px;
+  border: 0;
+  border-radius: 3px;
+}
+
+#contents .btn {
+  color: white;
+  text-decoration: none;
+}
+
+#contents .box-buttons .btn-blue {
+  background-color: #0088cf;
+}
+
+#contents .box-buttons .btn-gray {
+  background-color: #6b7f89;
+}
+
+#contents .box-buttons .btn-red {
+  background-color: #f00;
+}
+
+#contents .flex-box {
+  display: flex;
+}
+
+#contents .flex-box {
+  justify-content: space-between;
+}
+
+
+#contents .flex-table .item.table-th .bullet {
+  margin-right: 5px;
+  color: red;
+}
+
 
 /* 7. 모바일 비밀번호 */
 .certify {
