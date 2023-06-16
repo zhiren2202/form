@@ -10,7 +10,31 @@
 
 body {
   padding: 2em 15em;
-  font-size: 16px;
+  font-size: 18px;
+}
+
+@media screen and (max-width:1280px) {
+  body {
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width:768px) {
+  body {
+    font-size: 15px;
+  }
+}
+
+@media screen and (max-width:640px) {
+  body {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width:320px) {
+  body {
+    font-size: 13px;
+  }
 }
 
 .blind {
@@ -45,15 +69,11 @@ img.ui-datepicker-trigger {
 
 [class*='form-'] input {
   text-align: center;
-  padding: 0.1em 0;
-}
-
-[class*='form-'] input[type='tel'] {
-  text-align: left;
+  padding: 0.5em 0;
 }
 
 [class*='form-'] select {
-  padding: 0.1em;
+  padding: 0.5em;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -81,7 +101,7 @@ img.ui-datepicker-trigger {
 }
 
 .btnBox button {
-  padding: 0.1em 0.5em;
+  padding: 0.5em 1em;
   background-color: #333;
   color: #fff;
   border: 0;
@@ -95,16 +115,16 @@ img.ui-datepicker-trigger {
 
 /* input 요소 크기 */
 #recruit-year {
-  width: 5.5em;
+  width: 6em;
 }
 #recruit-type {
-  width: 5.5em;
+  width: 6em;
 }
 #recruit-num {
   width: 3em;
 }
 [id*='Date'] {
-  width: 6em;
+  width: 8em;
 }
 #id-num {
   width: 10em;
@@ -159,8 +179,8 @@ img.ui-datepicker-trigger {
 }
 
 .form-1 .btnBox {
-  bottom: 0.5em;
-  right: 0;
+  bottom: 1em;
+  right: 1em;
 }
 
 /* form-2, form-3, form-4 */
@@ -179,8 +199,7 @@ img.ui-datepicker-trigger {
 .form-2 > .btnBox,
 .form-3 > .btnBox,
 .form-4 > .btnBox {
-  bottom: 1em;
-  right: 1em;
+  position: relative;
 }
 
 /* form-5, form-6, form-7 (조회/초기화) */
@@ -205,7 +224,7 @@ img.ui-datepicker-trigger {
 .form-5 > div,
 .form-6 > div,
 .form-7 > div {
-  width: 14em;
+  width: 15em;
   margin-bottom: 1em;
 }
 
@@ -226,7 +245,7 @@ img.ui-datepicker-trigger {
 .form-6 > div .label_group,
 .form-7 > div .label_group {
   width: 7em;
-  background-color: #e7e7e7;
+  /* background-color: #e7e7e7; */
   line-height: 1.5em;
 }
 
