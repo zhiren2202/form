@@ -33,6 +33,7 @@ img.ui-datepicker-trigger {
 /* form CSS */
 [class*='form-'] {
   width: 100%;
+  min-width: 400px;
   overflow: hidden;
   margin-bottom: 2em;
   padding: 1em;
@@ -115,7 +116,6 @@ img.ui-datepicker-trigger {
 /* form-1 */
 .form-1 {
   text-align: left;
-  min-width: 405px;
 }
 
 .form-1 > fieldset {
@@ -187,12 +187,6 @@ img.ui-datepicker-trigger {
 }
 
 /* form-2, form-3, form-4 */
-.form-2,
-.form-3,
-.form-4 {
-  min-width: 420px;
-}
-
 .form-2 > .label_wrap,
 .form-3 > .label_wrap,
 .form-4 > .label_wrap {
@@ -228,7 +222,6 @@ img.ui-datepicker-trigger {
   flex-wrap:wrap;
   text-align: left;
   position: relative;
-  min-width: 370px;
   background-color: #f8f8f8;
 }
 
@@ -349,6 +342,11 @@ img.ui-datepicker-trigger {
 @media screen and (max-width:600px) {
   .form-1 > fieldset {
     width: 100%;
+  }
+  .form-2,
+  .form-3,
+  .form-4 {
+    text-align: left;
   }
 }
 
