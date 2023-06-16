@@ -289,6 +289,47 @@ function remove_tr(This) {
     }
 }
 
+// 6-3. 동적 태그 만들기
+$(function () {
+  var cnt = 0;
+
+  $("#BtnFileAdd").click(function () {
+    var oEl = $(".input-multi-file").find(".flex-table");
+
+    if (oEl.find(".flex-box").length < 5) {
+      oEl.find(".flex-box").last().clone().appendTo(oEl);
+      oEl.find(".flex-box").last().find("input").val("");
+      var name = "abc" + ++cnt;
+      oEl.find(".flex-box").last().find("input").attr("id", name);
+    } else {
+      alert("첨부서류는 최대 5개 입니다.");
+    }
+
+    return false;
+  });
+
+  $("#BtnFileSubtract").click(function () {
+    var oEl = $(".input-multi-file").find(".flex-table");
+
+    if (oEl.find(".flex-box").length > 1) {
+      oEl.find(".flex-box").last().remove();
+      --cnt;
+    } else {
+      alert("첨부서류는 최소 1개 입니다.");
+    }
+
+    return false;
+  });
+
+  $("#BtnSubmit").click(function () {
+    for (var i = 0; i <= cnt; i++) {
+      var name = "#abc" + i;
+      var alt = $(name).val();
+      alert(alt);
+    }
+  });
+});
+
 // 7. 모바일 비밀번호
 $(function(){
     $(document).on("keypress keyup keydown", "input[onlyNumber]", function(e){

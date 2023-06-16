@@ -29,9 +29,9 @@ function setDateBox(){
 	}
 };
 
-// 조회/초기화1 - 등록일자
+// 조회1 - 등록일자1
 $(function () {
-  $(".fromDate").datepicker({
+  $("#fromDate1").datepicker({
     showOn: "both",
     buttonImage: "http://jqueryui.com/resources/demos/datepicker/images/calendar.gif",
     buttonImageOnly : true,
@@ -40,10 +40,10 @@ $(function () {
     changeMonth: true,
     minDate: "-1M",
     onClose: function (selectedDate) {
-      $(".toDate").datepicker("option", "minDate", selectedDate);
+      $("#toDate1").datepicker("option", "minDate", selectedDate);
     },
   });
-  $(".toDate").datepicker({
+  $("#toDate1").datepicker({
     showOn: "both",
     buttonImage: "http://jqueryui.com/resources/demos/datepicker/images/calendar.gif",
     buttonImageOnly : true,
@@ -52,38 +52,183 @@ $(function () {
     changeMonth: true,
     minDate: "0",
     onClose: function (selectedDate) {
-      $(".fromDate").datepicker("option", "maxDate", selectedDate);
+      $("#fromDate1").datepicker("option", "maxDate", selectedDate);
     },
   });
 });
 
-// 조회/초기화1 (폼 추가 생성)
+// 조회1 - 등록일자2
 $(function () {
-  var survey_options = document.getElementById("survey_options");
-  var add_more_fields = document.getElementById("add_more_fields");
-  var remove_fields = document.getElementById("remove_fields");
+  $("#fromDate2").datepicker({
+    showOn: "both",
+    buttonImage: "http://jqueryui.com/resources/demos/datepicker/images/calendar.gif",
+    buttonImageOnly : true,
+    buttonText: "날짜선택",
+    dateFormat: "yy-mm-dd",
+    changeMonth: true,
+    minDate: "-1M",
+    onClose: function (selectedDate) {
+      $("#toDate2").datepicker("option", "minDate", selectedDate);
+    },
+  });
+  $("#toDate2").datepicker({
+    showOn: "both",
+    buttonImage: "http://jqueryui.com/resources/demos/datepicker/images/calendar.gif",
+    buttonImageOnly : true,
+    buttonText: "날짜선택",
+    dateFormat: "yy-mm-dd",
+    changeMonth: true,
+    minDate: "0",
+    onClose: function (selectedDate) {
+      $("#fromDate2").datepicker("option", "maxDate", selectedDate);
+    },
+  });
+});
 
-  add_more_fields.onclick = function () {
-    var newField = document.createElement("input");
-    newField.setAttribute("type", "text");
-    newField.setAttribute("name", "survey_options[]");
-    newField.setAttribute("class", "survey_options");
-    newField.setAttribute("siz", 50);
-    newField.setAttribute("placeholder", "Another Field");
-    survey_options.appendChild(newField);
-  };
+// 조회/초기화1 - 등록일자
+$(function () {
+  $("#fromDate3").datepicker({
+    showOn: "both",
+    buttonImage: "http://jqueryui.com/resources/demos/datepicker/images/calendar.gif",
+    buttonImageOnly : true,
+    buttonText: "날짜선택",
+    dateFormat: "yy-mm-dd",
+    changeMonth: true,
+    minDate: "-1M",
+    onClose: function (selectedDate) {
+      $("#toDate3").datepicker("option", "minDate", selectedDate);
+    },
+  });
+  $("#toDate3").datepicker({
+    showOn: "both",
+    buttonImage: "http://jqueryui.com/resources/demos/datepicker/images/calendar.gif",
+    buttonImageOnly : true,
+    buttonText: "날짜선택",
+    dateFormat: "yy-mm-dd",
+    changeMonth: true,
+    minDate: "0",
+    onClose: function (selectedDate) {
+      $("#fromDate3").datepicker("option", "maxDate", selectedDate);
+    },
+  });
+});
 
-  remove_fields.onclick = function () {
-    var input_tags = survey_options.getElementsByTagName("input");
-    if (input_tags.length > 2) {
-      survey_options.removeChild(input_tags[input_tags.length - 1]);
+// 조회/초기화2 - 등록일자
+$(function () {
+  $("#fromDate4").datepicker({
+    showOn: "both",
+    buttonImage: "http://jqueryui.com/resources/demos/datepicker/images/calendar.gif",
+    buttonImageOnly : true,
+    buttonText: "날짜선택",
+    dateFormat: "yy-mm-dd",
+    changeMonth: true,
+    minDate: "-1M",
+    onClose: function (selectedDate) {
+      $("#toDate4").datepicker("option", "minDate", selectedDate);
+    },
+  });
+  $("#toDate4").datepicker({
+    showOn: "both",
+    buttonImage: "http://jqueryui.com/resources/demos/datepicker/images/calendar.gif",
+    buttonImageOnly : true,
+    buttonText: "날짜선택",
+    dateFormat: "yy-mm-dd",
+    changeMonth: true,
+    minDate: "0",
+    onClose: function (selectedDate) {
+      $("#fromDate4").datepicker("option", "maxDate", selectedDate);
+    },
+  });
+});
+
+// 조회/초기화3 - 제출일자
+$(function () {
+  $("#fromDate5").datepicker({
+    showOn: "both",
+    buttonImage: "http://jqueryui.com/resources/demos/datepicker/images/calendar.gif",
+    buttonImageOnly : true,
+    buttonText: "날짜선택",
+    dateFormat: "yy-mm-dd",
+    changeMonth: true,
+    minDate: "-1M",
+    onClose: function (selectedDate) {
+      $("#toDate5").datepicker("option", "minDate", selectedDate);
+    },
+  });
+  $("#toDate5").datepicker({
+    showOn: "both",
+    buttonImage: "http://jqueryui.com/resources/demos/datepicker/images/calendar.gif",
+    buttonImageOnly : true,
+    buttonText: "날짜선택",
+    dateFormat: "yy-mm-dd",
+    changeMonth: true,
+    minDate: "0",
+    onClose: function (selectedDate) {
+      $("#fromDate5").datepicker("option", "maxDate", selectedDate);
+    },
+  });
+});
+
+// form-1_1
+$(function () {
+  var cnt = 0;
+
+  $("#BtnFileAdd1_1").click(function () {
+    var oEl = $(".input-multi-file-1_1").find(".flex-table-1_1");
+
+    if (oEl.find(".flex-box-1_1").length < 5) {
+      oEl.find(".flex-box-1_1").last().clone().appendTo(oEl);
+      oEl.find(".flex-box-1_1").last().find("input").val("");
+      oEl.find(".flex-box-1_1").last().find("input").attr("id", "id-num");
+    } else {
+      alert("추가 조회 가능 개수는 최대 5개 입니다.");
     }
-  };
 
-  document.getElementById("print-values-btn").onclick = function () {
-    let allTextBoxes = document.getElementsByName("survey_options[]");
-    for (let i of allTextBoxes) {
-      console.log(i.value);
+    return false;
+  });
+
+  $("#BtnFileSubtract1_1").click(function () {
+    var oEl = $(".input-multi-file-1_1").find(".flex-table-1_1");
+
+    if (oEl.find(".flex-box-1_1").length > 1) {
+      oEl.find(".flex-box-1_1").last().remove();
+      --cnt;
+    } else {
+      alert("추가 조회 가능 개수는 최소 1개 입니다.");
     }
-  };
+
+    return false;
+  });
+});
+
+// form-1_2
+$(function () {
+  var cnt = 0;
+
+  $("#BtnFileAdd1_2").click(function () {
+    var oEl = $(".input-multi-file-1_2").find(".flex-table-1_2");
+
+    if (oEl.find(".flex-box-1_2").length < 5) {
+      oEl.find(".flex-box-1_2").last().clone().appendTo(oEl);
+      oEl.find(".flex-box-1_2").last().find("select").val("");
+      oEl.find(".flex-box-1_2").last().find("select").attr("id", "recruit-year");
+    } else {
+      alert("추가 조회 가능 개수는 최대 5개 입니다.");
+    }
+
+    return false;
+  });
+
+  $("#BtnFileSubtract1_2").click(function () {
+    var oEl = $(".input-multi-file-1_2").find(".flex-table-1_2");
+
+    if (oEl.find(".flex-box-1_2").length > 1) {
+      oEl.find(".flex-box-1_2").last().remove();
+      --cnt;
+    } else {
+      alert("추가 조회 가능 개수는 최소 1개 입니다.");
+    }
+
+    return false;
+  });
 });
