@@ -181,7 +181,7 @@ $(function () {
       oEl.find(".flex-box-1_1").last().find("input").val("");
       oEl.find(".flex-box-1_1").last().find("input").attr("id", "id-num");
     } else {
-      alert("추가 조회 가능 개수는 최대 5개 입니다.");
+      alert("조회 가능한 개수는 최대 5개 입니다.");
     }
 
     return false;
@@ -194,7 +194,7 @@ $(function () {
       oEl.find(".flex-box-1_1").last().remove();
       --cnt;
     } else {
-      alert("추가 조회 가능 개수는 최소 1개 입니다.");
+      alert("조회 가능한 개수는 최소 1개 입니다.");
     }
 
     return false;
