@@ -9,7 +9,7 @@
 }
 
 body {
-  padding: 2em 10em;
+  padding: 2em 15em;
   font-size: 16px;
 }
 
@@ -53,13 +53,12 @@ img.ui-datepicker-trigger {
 
 [class*='form-'] select {
   padding: 0.1em;
-  padding-right: 1em;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
   background-image: url(../imgs/select_arrow.png);
   background-repeat: no-repeat;
-  background-position: right center;
+  background-position: right 0.5em center;
   background-size: 10px 10px;
 }
 
@@ -116,25 +115,25 @@ img.ui-datepicker-trigger {
 /* form-1 */
 .form-1 {
   text-align: left;
-  min-width: 380px;
+  min-width: 405px;
 }
 
 .form-1 > fieldset {
   display: block;
-  width: 80%;
+  width: 60%;
   margin: 0 auto;
   /* background-color: antiquewhite; */
 }
 
 .form-1 .col_wrap {
-  width: 80%;
+  width: 70%;
   float: left;
-  margin-left: 20%;
+  margin-left: 30%;
   position: relative;
 }
 
 .form-1 .col_wrap:first-child {
-  width: 20%;
+  width: 30%;
 }
 
 .form-1 .col_wrap .label_group,
@@ -164,10 +163,8 @@ img.ui-datepicker-trigger {
   float: left;
   width: 70%;
   height: 2em;
-  /* border: 1px solid #333; */
   position: relative;
 }
-/* //col_wrap_year */
 
 .form-1 .col_wrap .survey_controls {
   float: left;
@@ -264,6 +261,10 @@ img.ui-datepicker-trigger {
   line-height: 1.5em;
 }
 
+.form-7 > div .input_group [id*='submit-radio'] {
+  margin-right: 0.5em;
+}
+
 .form-5 .btnBox,
 .form-6 .btnBox,
 .form-7 .btnBox {
@@ -296,19 +297,31 @@ img.ui-datepicker-trigger {
   }
 }
 
-@media screen and (max-width:1150px) {
+@media screen and (max-width:1280px) {
   .form-1 > fieldset {
-    width: 60%;
+    width: 70%;
   }
 }
 
-@media screen and (max-width:1050px){
+@media screen and (max-width:1180px){
   body {
     font-size: 14px;
+    padding: 2em 10em;
   }
 
   #recruit-type {
     width: 6em;
+  }
+
+  .form-1 .col_wrap {
+    margin-left: 25%;
+  }
+
+  .form-1 .col_wrap:first-child {
+    width: 25%;
+  }
+  .form-1 .mleft0 {
+    margin-left: 0;
   }
 }
 
@@ -318,12 +331,12 @@ img.ui-datepicker-trigger {
   }
 }
 
-@media screen and (max-width:800px){
+@media screen and (max-width:750px){
   .form-1 .mleft0 {
     margin-left: 0;
   }
   .form-1 > fieldset {
-    width: 70%;
+    width: 80%;
   }
 }
 
@@ -333,13 +346,13 @@ img.ui-datepicker-trigger {
   }
 }
 
-@media screen and (max-width:590px) {
+@media screen and (max-width:600px) {
   .form-1 > fieldset {
     width: 100%;
   }
 }
 
-@media screen and (max-width:520px){
+@media screen and (max-width:560px){
   body {
     padding: 2em;
     font-size: 13px;
