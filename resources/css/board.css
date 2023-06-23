@@ -1,0 +1,249 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-size: inherit;
+    font-weight: inherit;
+    font-style: inherit;
+    color: inherit;
+}
+
+body {
+    font-size: 18px;
+    color: #333;
+}
+
+@media screen and (max-width:1280px) {
+    body {
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width:768px) {
+    body {
+        font-size: 15px;
+    }
+}
+
+@media screen and (max-width:650px) {
+    body {
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width:320px) {
+    body {
+        font-size: 13px;
+    }
+}
+
+.blind {
+    border: 0;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    white-space: nowrap;
+}
+
+a {
+    text-decoration: none;
+    color: #333;
+}
+
+li {
+    list-style: none;
+}
+
+section[class*='bbs-'] {
+    width: 100%;
+    margin: 2em auto;
+}
+
+/* 게시판 검색란 */
+.bbs_srch {
+    width: 80%;
+    margin: 2em auto;
+}
+
+.bbs_srch fieldset {
+    border: 0;
+    padding: 2em 1em;
+    background-color: #f4f4f4;
+    text-align: center;
+}
+
+.bbs_srch select {
+    width: 15%;
+    min-width: 8em;
+    height: 2.4em;
+    padding: 0 1em;
+    vertical-align: middle;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: #fff url(../imgs/select_arrow.png) no-repeat right 1em center;
+    border: 1px solid #E2E2E2;
+    border-radius: 0.2em;
+}
+
+.bbs_srch input[type='text'] {
+    width: 50%;
+    height: 2.4em;
+    line-height: 2.4em;
+    padding: 0 1em;
+    vertical-align: middle;
+    border: 1px solid #E2E2E2;
+    border-radius: 0.2em;
+}
+
+.bbs_srch_btn {
+    position: relative;
+    padding: 0 1em;
+    height: 2.4em;
+    vertical-align: middle;
+    background: #3498db url('/common/images/board/ico_bbs_srch.png') no-repeat 1rem center;
+    border: 1px solid #3498db;
+    color: #fff;
+    border-radius: 0.2em;
+}
+
+@media screen and (max-width:650px) {
+    .bbs_srch select {
+        width: 100%;
+        margin: 0.2em 0;
+    }
+
+    .bbs_srch input[type='text'] {
+        width: 100%;
+        margin: 0.2em 0;
+    }
+
+    .bbs_srch_btn {
+        width: 100%;
+        margin: 0.2em 0;
+    }
+
+    .hidden-col {
+        display: none;
+    }
+}
+
+@media screen and (max-width:320px) {
+    .bbs_srch select {
+        padding: 0 0.8em;
+        background-position: right 0.8em center;
+    }
+
+    .bbs_srch input[type='text'] {
+        padding: 0 0.8em;
+    }
+}
+
+/* 게시판 리스트 */
+.bbs_list {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.bbs_table {
+    width: 100%;
+    text-align: center;
+    border-collapse: separate;
+    border-spacing: 0;
+    table-layout: fixed;
+    border-top: 2px solid #CCCCCC;
+    border-bottom: 2px solid #CCCCCC;
+}
+
+.bbs_list .bbs_table thead tr th {
+    border-bottom: 1px solid #CCCCCC;
+    background: #f4f4f4;
+    padding: 0.5em;
+}
+
+.bbs_list .bbs_table tbody tr:hover {
+    background-color: #f9fafb;
+}
+
+.bbs_list .bbs_table tbody tr td {
+    border-bottom: 1px solid #eaecf1;
+    padding: 0.5em;
+}
+
+.bbs_list .bbs_table tbody td a {
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+/* 게시판 페이징 */
+.bbs_page {
+    width: 90%;
+    margin: 2em auto;
+    text-align: center;
+}
+
+[class*='bbs_page_'] {
+    display: inline-block;
+    width: 2rem;
+    height: 2rem;
+    line-height: 2rem;
+    vertical-align: middle;
+    background-color: #f4f4f4;
+    border: 1px solid #f4f4f4;
+    border-radius: 0.2em;
+}
+
+.bbs_pageNums {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 0.5em;
+}
+
+.bbs_pageNums span {
+    display: none;
+}
+
+.bbs_pageNums strong.bbs_page_num {
+    color: #fff;
+    background-color: #3498db;
+}
+
+@media screen and (max-width:650px) {
+    [class*='bbs_page_'] {
+        width: 1.8em;
+        height: 1.8em;
+        line-height: 1.8em;
+    }
+
+    .bbs_page_num {
+        display: none;
+    }
+
+    .bbs_page_num:first-child,
+    .bbs_page_num:last-child {
+        display: inline-block;
+    }
+
+    .bbs_pageNums strong.bbs_page_num {
+        color: #3498db;
+        background-color: #f4f4f4;
+    }
+
+    .bbs_pageNums span {
+        display: inline-block;
+    }
+}
+
+/* 2. 기간설정 */
+.bbs-date {
+    width: 80%;
+    margin: 2em auto;
+}
