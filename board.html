@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Board</title>
+    <link rel="stylesheet" href="./resources/css/jquery-ui.css">
+    <link rel="stylesheet" href="./resources/css/jquery-ui.theme.css">
+    <link rel="stylesheet" href="./resources/css/board.css">
+    <script src="./resources/js/jquery-3.7.0.min.js" defer></script>
+    <script src="./resources/js/jquery-ui.js" defer></script>
+    <script src="./resources/js/board.js" defer></script>
+</head>
+<body>
+    
+<!-- 1. 일반 -->
+<section class="bbs-normal">
+    <form action="#" class="bbs_srch">
+        <fieldset>
+            <legend class="blind">1. 일반</legend>
+            <select class="bbs_srch_input">
+                <option value="">전체</option>
+                <option value="">제목+내용</option>
+                <option value="">내용</option>
+            </select>
+            <input type="text" class="bbs_srch_input" placeholder="검색어를 입력해주세요">
+            <button type="submit" class="bbs_srch_btn">검색</button>
+        </fieldset>
+    </form>
+
+    <div class="bbs_list">
+        <table class="bbs_table">
+            <caption class="blind">일반 게시판</caption>
+            <colgroup>
+                <col style="width: 10%;" class="hidden-col">
+                <col style="width: 35%;">
+                <col style="width: 10%;" class="hidden-col">
+                <col style="width: 20%;">
+                <col style="width: 10%;" class="hidden-col">
+            </colgroup>
+            <thead>
+                <tr>
+                    <th scope="col" class="hidden-col">번호</th>
+                    <th scope="col">제목</th>
+                    <th scope="col" class="hidden-col">작성자</th>
+                    <th scope="col">등록일</th>
+                    <th scope="col" class="hidden-col">조회수</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="hidden-col">1</td>
+                    <td><a href="#">소담초아버지회</a></td>
+                    <td class="hidden-col">이**</td>
+                    <td>2023-06-21</td>
+                    <td class="hidden-col">12</td>
+                </tr>
+                <tr>
+                    <td class="hidden-col">2</td>
+                    <td>
+                        <a href="#">소담초 아버지회 워터파크 행사 취재를 위한 장비 대여 신청</a>
+                    </td>
+                    <td class="hidden-col">이**</td>
+                    <td>2023-06-21</td>
+                    <td class="hidden-col">12</td>
+                </tr>
+                <tr>
+                    <td class="hidden-col">3</td>
+                    <td><a href="#">소담초아버지회 행사 취재 및 촬영</a></td>
+                    <td class="hidden-col">이**</td>
+                    <td>2023-06-21</td>
+                    <td class="hidden-col">12</td>
+                </tr>
+                <tr>
+                    <td class="hidden-col">4</td>
+                    <td><a href="#">소담초 아버지회 워터파크 행사 취재를 위한 장비 대여 신청 소담초 아버지회 워터파크 행사 취재를 위한 장비 대여 신청</a></td>
+                    <td class="hidden-col">이**</td>
+                    <td>2023-06-21</td>
+                    <td class="hidden-col">12</td>
+                </tr>
+                <tr>
+                    <td class="hidden-col">5</td>
+                    <td><a href="#">소담초 아버지회 워터파크 행사 취재를 위한 장비 대여 신청 소담초아버지회 행사 취재 및 촬영</a></td>
+                    <td class="hidden-col">이**</td>
+                    <td>2023-06-21</td>
+                    <td class="hidden-col">12</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="bbs_page">
+        <a href="#" class="bbs_page_arr2" title="맨처음 페이지로 이동됩니다.">&#60;&#60;</a>
+        <a href="#" class="bbs_page_arr1" title="이전 페이지로 이동됩니다.">&#60;</a>
+        <div class="bbs_pageNums">
+            <strong class="bbs_page_num" title="1 페이지로 이동됩니다.">1</strong>
+            <a href="#" class="bbs_page_num" title="2 페이지로 이동됩니다.">2</a>
+            <a href="#" class="bbs_page_num" title="3 페이지로 이동됩니다.">3</a>
+            <a href="#" class="bbs_page_num" title="4 페이지로 이동됩니다.">4</a>
+            <a href="#" class="bbs_page_num" title="5 페이지로 이동됩니다.">5</a>
+            <a href="#" class="bbs_page_num" title="6 페이지로 이동됩니다.">6</a>
+            <a href="#" class="bbs_page_num" title="7 페이지로 이동됩니다.">7</a>
+            <a href="#" class="bbs_page_num" title="8 페이지로 이동됩니다.">8</a>
+            <a href="#" class="bbs_page_num" title="9 페이지로 이동됩니다.">9</a>
+            <span>/</span>
+            <a href="#" class="bbs_page_num" title="10 페이지로 이동됩니다.">10</a>
+        </div>
+        <a href="#" class="bbs_page_arr1" title="다음 페이지로 이동됩니다.">&#62;</a>
+        <a href="#" class="bbs_page_arr2" title="맨마지막 페이지로 이동됩니다.">&#62;&#62;</a>
+    </div>
+</section>
+
+<!-- 2. 기간설정 -->
+<section class="bbs-date">
+
+    <form action="#" class="bbs_srch">
+        <fieldset>
+            <legend class="blind">1. 일반</legend>
+            <select class="bbs_srch_input">
+                <option value="">전체</option>
+                <option value="">제목+내용</option>
+                <option value="">내용</option>
+            </select>
+            <input type="text" class="bbs_srch_input" placeholder="검색어를 입력해주세요">
+            <button type="submit" class="bbs_srch_btn">검색</button>
+        </fieldset>
+    </form>
+    
+    <div class="board-date-wrap">
+        <div class="board-datebox date-search">
+            <input type="text" id="search-start" title="검색 시작날짜" name="srPeriodStart"
+                class="board-search-input calendar datepicker02 input" value=""> ~
+            <input type="text" id="search-end" title="검색 마지막날짜" name="srPeriodEnd"
+                class="board-search-input calendar datepicker02 input" value="">
+        </div>
+        <!-- <button type="submit" class="board-search-btn">
+            <span>검색</span>
+        </button> -->
+        <ul class="board-date-period">
+            <li><button type="button" class="week"><span>1주일</span></button></li>
+            <li><button type="button" class="month"><span>1개월</span></button></li>
+            <li><button type="button" class="year3"><span>3년</span></button></li>
+            <li><button type="button" class="init"><span>미지정</span></button></li>
+        </ul>
+        <button type="submit" class="bbs_srch_btn">검색</button>
+    </div>
+
+</section>
+
+</body>
+</html>
